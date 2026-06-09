@@ -1,0 +1,13 @@
+# Originale Bilder (zu groß für Git – werden separat verwaltet)
+Bilder/
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Editor
+.vscode/
+*.swp
+
+# Node (falls lokal getestet)
+node_modules/
