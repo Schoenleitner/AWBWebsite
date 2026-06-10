@@ -108,6 +108,10 @@ document.addEventListener('DOMContentLoaded', () => {
         message: form.message?.value,
         object: form.object?.value,
         privacy: form.privacy?.checked,
+        newsletter: form.newsletter?.checked,
+        interesse_miete: form.interesse_miete?.checked,
+        interesse_mietkauf_belags: form.interesse_mietkauf_belags?.checked,
+        interesse_mietkauf_schluessel: form.interesse_mietkauf_schluessel?.checked,
       };
 
       try {

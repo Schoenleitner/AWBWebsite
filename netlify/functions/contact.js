@@ -1,7 +1,79 @@
 /* Netlify Function: Kontaktformular via Brevo API
    API Key wird als Netlify-Umgebungsvariable gesetzt: BREVO_API_KEY
+   NIEMALS den API Key in dieses File schreiben!
+
+   Brevo Listen:
+     #2 = AWB Weißenkirchen
+     #3 = AWB Nußdorf 8
+     #4 = Allgemeine Anfragen / Maklerei
+     #5 = NewsletterAWB
+
+   Eigenprojekte (Seeblick Nußdorf, Reihenhäuser Weißenkirchen)
+   → zusätzlich Deal in Pipeline "Attergauer Wohnbau", Stage "Neue Anfrage"
 */
 
+// ---------------------------------------------------------------------------
+// Hilfsfunktion: Brevo API Call
+// ---------------------------------------------------------------------------
+async function brevo(apiKey, method, path, body) {
+  const res = await fetch(`https://api.brevo.com/v3${path}`, {
+    method,
+    headers: {
+      'api-key': apiKey,
+      'Content-Type': 'application/json',
+    },
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  const text = await res.text();
+  let data;
+  try { data = JSON.parse(text); } catch { data = text; }
+  return { ok: res.ok, status: res.status, data };
+}
+
+// ---------------------------------------------------------------------------
+// Welche Brevo-Liste passt zum Objekt?
+// ---------------------------------------------------------------------------
+function getListId(obj) {
+  if (!obj) return 4;
+  if (obj.includes('Seeblick') || obj.includes('Nußdorf 8')) return 3;
+  if (obj.includes('Weißenkirchen')) return 2;
+  return 4;
+}
+
+// ---------------------------------------------------------------------------
+// Ist es ein Eigenprojekt? → Deal anlegen
+// ---------------------------------------------------------------------------
+function isEigenprojekt(obj) {
+  if (!obj) return false;
+  return obj.includes('Seeblick') || obj.includes('Weißenkirchen');
+}
+
+// ---------------------------------------------------------------------------
+// Pipeline-ID und Stage-ID "Neue Anfrage" aus Brevo holen
+// ---------------------------------------------------------------------------
+async function getPipelineStage(apiKey) {
+  const { ok, data } = await brevo(apiKey, 'GET', '/crm/pipeline/details/all');
+  if (!ok || !Array.isArray(data)) return null;
+
+  const pipeline = data.find(p =>
+    p.pipeline_name && p.pipeline_name.toLowerCase().includes('attergauer')
+  );
+  if (!pipeline) return null;
+
+  const stages = pipeline.stages || [];
+  const stage = stages.find(s =>
+    s.name && s.name.toLowerCase().includes('neue anfrage')
+  );
+
+  return {
+    pipelineId: pipeline.id,
+    stageId: stage ? stage.id : (stages[0] ? stages[0].id : null),
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Handler
+// ---------------------------------------------------------------------------
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
@@ -14,7 +86,19 @@ exports.handler = async (event) => {
     return { statusCode: 400, body: 'Invalid JSON' };
   }
 
-  const { name, email, phone, subject, message, object: propertyObject, privacy } = data;
+  const {
+    name,
+    email,
+    phone,
+    subject,
+    message,
+    object: propertyObject,
+    privacy,
+    newsletter,
+    interesse_miete,
+    interesse_mietkauf_belags,
+    interesse_mietkauf_schluessel,
+  } = data;
 
   if (!name || !email || !message || !privacy) {
     return { statusCode: 400, body: 'Pflichtfelder fehlen' };
@@ -25,6 +109,9 @@ exports.handler = async (event) => {
     return { statusCode: 500, body: 'Konfigurationsfehler' };
   }
 
+  // -------------------------------------------------------------------------
+  // 1. E-Mail an Team
+  // -------------------------------------------------------------------------
   const emailBody = `
 Neue Anfrage über attergauer-wohnbau.at
 
@@ -33,53 +120,140 @@ E-Mail:   ${email}
 Telefon:  ${phone || '—'}
 Betreff:  ${subject || '—'}
 Objekt:   ${propertyObject || '—'}
+Newsletter: ${newsletter ? 'Ja' : 'Nein'}
 
 Nachricht:
 ${message}
   `.trim();
 
-  // Send notification to company
-  const payload = {
+  const teamMail = {
     sender: { name: 'Attergauer Wohnbau Website', email: 'noreply@attergauer-wohnbau.at' },
-    to: [{ email: 'team@attergauer-wohnbau.at', name: 'Attergauer Wohnbau' }],
+    to: [
+      { email: 'team@attergauer-wohnbau.at', name: 'Attergauer Wohnbau' },
+      { email: 'michael@attergauer-wohnbau.at', name: 'Michael Schönleitner' },
+    ],
     replyTo: { email, name },
     subject: `Neue Anfrage: ${subject || propertyObject || 'Kontaktformular'}`,
     textContent: emailBody,
   };
 
   try {
-    const res = await fetch('https://api.brevo.com/v3/smtp/email', {
-      method: 'POST',
-      headers: {
-        'api-key': apiKey,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-    });
-
-    if (!res.ok) {
-      const errText = await res.text();
-      console.error('Brevo error:', errText);
+    const mailRes = await brevo(apiKey, 'POST', '/smtp/email', teamMail);
+    if (!mailRes.ok) {
+      console.error('Team-Mail Fehler:', mailRes.data);
       return { statusCode: 500, body: 'E-Mail-Versand fehlgeschlagen' };
     }
-
-    // Send confirmation to inquirer
-    const confirm = {
-      sender: { name: 'Attergauer Wohnbau GmbH', email: 'team@attergauer-wohnbau.at' },
-      to: [{ email, name }],
-      subject: 'Ihre Anfrage bei Attergauer Wohnbau GmbH',
-      textContent: `Sehr geehrte/r ${name},\n\nvielen Dank für Ihre Anfrage. Wir werden uns so schnell wie möglich bei Ihnen melden.\n\nMit freundlichen Grüßen\nAttergauer Wohnbau GmbH\nThern 20, 4880 St. Georgen i. A.\nTel.: +43 7667 6409-42\nteam@attergauer-wohnbau.at`,
-    };
-
-    await fetch('https://api.brevo.com/v3/smtp/email', {
-      method: 'POST',
-      headers: { 'api-key': apiKey, 'Content-Type': 'application/json' },
-      body: JSON.stringify(confirm),
-    });
-
-    return { statusCode: 200, body: 'OK' };
   } catch (err) {
-    console.error('Function error:', err);
+    console.error('Team-Mail Exception:', err);
     return { statusCode: 500, body: 'Serverfehler' };
   }
+
+  // -------------------------------------------------------------------------
+  // 2. Bestätigungs-E-Mail an Anfragenden (mit Exposé-Links je nach Projekt)
+  // -------------------------------------------------------------------------
+  const BASE_URL = 'https://www.attergauer-wohnbau.at';
+
+  // Exposé-Links zusammenstellen
+  const exposeLinks = [];
+  if (propertyObject && propertyObject.includes('Seeblick')) {
+    exposeLinks.push(`Exposé Seeblick Häuser Nußdorf:\n${BASE_URL}/downloads/expose-seeblick-nussdorf.pdf`);
+  }
+  if (propertyObject && propertyObject.includes('Weißenkirchen')) {
+    if (interesse_miete) {
+      exposeLinks.push(`Exposé Miete:\n${BASE_URL}/downloads/expose-weissenkirchen-miete.pdf`);
+    }
+    if (interesse_mietkauf_belags) {
+      exposeLinks.push(`Exposé Mietkauf belagsfertig:\n${BASE_URL}/downloads/expose-weissenkirchen-mietkauf-belags.pdf`);
+    }
+    if (interesse_mietkauf_schluessel) {
+      exposeLinks.push(`Exposé Mietkauf schlüsselfertig:\n${BASE_URL}/downloads/expose-weissenkirchen-mietkauf-schluessel.pdf`);
+    }
+    // Falls kein Interesse angekreuzt: alle drei mitschicken
+    if (!interesse_miete && !interesse_mietkauf_belags && !interesse_mietkauf_schluessel) {
+      exposeLinks.push(`Exposé Miete:\n${BASE_URL}/downloads/expose-weissenkirchen-miete.pdf`);
+      exposeLinks.push(`Exposé Mietkauf belagsfertig:\n${BASE_URL}/downloads/expose-weissenkirchen-mietkauf-belags.pdf`);
+      exposeLinks.push(`Exposé Mietkauf schlüsselfertig:\n${BASE_URL}/downloads/expose-weissenkirchen-mietkauf-schluessel.pdf`);
+    }
+  }
+  if (propertyObject && propertyObject.includes('Baugrundstück')) {
+    exposeLinks.push(`Exposé Baugrundstück Nußdorf:\n${BASE_URL}/downloads/expose-grundstueck-nussdorf.pdf`);
+  }
+
+  const exposeSection = exposeLinks.length > 0
+    ? `\n\nAls kleines Dankeschön finden Sie hier ${exposeLinks.length === 1 ? 'Ihr Exposé' : 'Ihre Exposés'} zum Download:\n\n${exposeLinks.join('\n\n')}`
+    : '';
+
+  const confirmMail = {
+    sender: { name: 'Attergauer Wohnbau GmbH', email: 'team@attergauer-wohnbau.at' },
+    to: [{ email, name }],
+    subject: 'Ihre Anfrage bei Attergauer Wohnbau GmbH',
+    textContent: `Sehr geehrte/r ${name},\n\nvielen Dank für Ihre Anfrage. Wir werden uns so schnell wie möglich bei Ihnen melden.${exposeSection}\n\nMit freundlichen Grüßen\nAttergauer Wohnbau GmbH\nThern 20, 4880 St. Georgen i. A.\nTel.: +43 7667 6409-42\nteam@attergauer-wohnbau.at`,
+  };
+
+  await brevo(apiKey, 'POST', '/smtp/email', confirmMail).catch(err =>
+    console.error('Bestätigungs-Mail Fehler:', err)
+  );
+
+  // -------------------------------------------------------------------------
+  // 3. CRM: Kontakt anlegen / aktualisieren
+  //    updateEnabled:true → existierender Kontakt wird aktualisiert statt Fehler
+  // -------------------------------------------------------------------------
+  const listId = getListId(propertyObject);
+  const listIds = [listId];
+  if (newsletter) listIds.push(5); // NewsletterAWB
+
+  const contactPayload = {
+    email,
+    updateEnabled: true,
+    attributes: {
+      FIRSTNAME: name,
+      SMS: phone || '',
+    },
+    listIds,
+  };
+
+  const contactRes = await brevo(apiKey, 'POST', '/contacts', contactPayload);
+  if (!contactRes.ok) {
+    console.error('Kontakt anlegen Fehler:', contactRes.data);
+    // Kein hartes Abbrechen — E-Mail wurde bereits gesendet
+  }
+
+  // -------------------------------------------------------------------------
+  // 4. Deal anlegen (nur bei Eigenprojekten)
+  // -------------------------------------------------------------------------
+  if (isEigenprojekt(propertyObject)) {
+    try {
+      const pipelineInfo = await getPipelineStage(apiKey);
+
+      if (pipelineInfo) {
+        const dealName = `${name} – ${propertyObject}`;
+        const dealPayload = {
+          name: dealName,
+          attributes: {
+            pipeline: pipelineInfo.pipelineId,
+            deal_stage: pipelineInfo.stageId,
+          },
+        };
+
+        const dealRes = await brevo(apiKey, 'POST', '/crm/deals', dealPayload);
+
+        if (dealRes.ok && dealRes.data && dealRes.data.id) {
+          // Kontakt mit Deal verknüpfen
+          await brevo(apiKey, 'PATCH', `/crm/deals/${dealRes.data.id}`, {
+            linkedContacts: [{ email }],
+          }).catch(err => console.error('Deal-Verknüpfung Fehler:', err));
+
+          console.log(`Deal angelegt: ${dealName} (ID: ${dealRes.data.id})`);
+        } else {
+          console.error('Deal anlegen Fehler:', dealRes.data);
+        }
+      } else {
+        console.error('Pipeline "Attergauer Wohnbau" nicht gefunden');
+      }
+    } catch (err) {
+      console.error('Deal Exception:', err);
+    }
+  }
+
+  return { statusCode: 200, body: 'OK' };
 };
