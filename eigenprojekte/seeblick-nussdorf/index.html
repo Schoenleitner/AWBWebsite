@@ -6,7 +6,7 @@
   <title>Seeblick Häuser Nußdorf am Attersee – Attergauer Wohnbau GmbH</title>
   <meta name="description" content="3 exklusive Häuser mit Panorama-Seeblick in Nußdorf am Attersee. Ca. 180 m², Übergabe Sommer 2026, Wärmepumpe, PV-Anlage, Loxone Smarthome. Jetzt besichtigen!">
   <link rel="stylesheet" href="../../css/style.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.css"/>
 </head>
 <body>
 
@@ -106,7 +106,7 @@
             <h4>Jetzt besichtigen!</h4>
             <p>Während viele Mitbewerber nur vom Papier verkaufen, können Sie unsere Häuser bereits vor Ort erleben. Vereinbaren Sie Ihren persönlichen Besichtigungstermin.</p>
           </div>
-          <a href="#contact-form" class="btn btn-primary">Termin anfragen</a>
+          <a id="termin-btn" href="#contact-form" class="btn btn-primary">Termin anfragen</a>
         </div>
       </div>
 
@@ -310,7 +310,7 @@
     <h2>Besichtigung vereinbaren</h2>
     <p>Überzeugen Sie sich selbst — die Häuser sind bereits fertig und können besichtigt werden. Rufen Sie an oder schreiben Sie uns.</p>
     <div class="cta-actions">
-      <a href="/#kontakt" class="btn btn-white">Kontakt aufnehmen</a>
+      <a href="#contact-form" class="btn btn-white">Kontakt aufnehmen</a>
       <a href="tel:+436648249411" class="btn btn-outline" style="color:white;border-color:rgba(255,255,255,0.5);">+43 664 82 49 411</a>
     </div>
   </div>
@@ -377,7 +377,7 @@
 <div id="lightbox" class="lightbox"><button class="lightbox-close">✕</button><button class="lightbox-prev">‹</button><img class="lightbox-img" src="" alt=""><button class="lightbox-next">›</button></div>
 <script src="../../js/main.js"></script>
 <script src="../../js/cookie.js"></script>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WLs=" crossorigin=""></script>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.js"></script>
 <script>
   // --- Leaflet Karte ---
   (function() {
@@ -455,6 +455,21 @@
     }, { passive: true });
 
     updateCar();
+  })();
+</script>
+<script>
+  // Termin-Button: mobil → Anruf, Desktop → mailto mit vorausgefülltem Betreff
+  (function() {
+    var btn = document.getElementById('termin-btn');
+    if (!btn) return;
+    var isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) || ('ontouchstart' in window && window.innerWidth < 800);
+    if (isMobile) {
+      btn.href = 'tel:+436648249411';
+      btn.textContent = 'Jetzt anrufen';
+    } else {
+      btn.href = 'mailto:team@attergauer-wohnbau.at?subject=Besichtigungstermin%20Seeblick%20H%C3%A4user%20Nu%C3%9Fdorf&body=Sehr%20geehrtes%20Team%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20einen%20Besichtigungstermin%20der%20Seeblick%20H%C3%A4user%20in%20Nu%C3%9Fdorf%20am%20Attersee.%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen%0A';
+      btn.textContent = 'Termin anfragen';
+    }
   })();
 </script>
 </body>
