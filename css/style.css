@@ -1169,3 +1169,73 @@ section { padding: 80px 0; }
   .lage-car { width: 50px; }
   #lage-map { height: 280px; }
 }
+
+/* =============================================
+   Cross-Selling Karte
+   ============================================= */
+.crosssell-grid {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+.crosssell-card {
+  display: flex;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  max-width: 680px;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.crosssell-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(103,153,204,0.18);
+}
+.crosssell-img {
+  position: relative;
+  width: 260px;
+  flex-shrink: 0;
+}
+.crosssell-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.crosssell-img .card-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+.crosssell-body {
+  padding: 28px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+.crosssell-body h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+.crosssell-body p {
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  line-height: 1.6;
+  margin: 0;
+}
+.crosssell-cta {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--blue);
+  margin-top: 4px;
+}
+@media (max-width: 600px) {
+  .crosssell-card { flex-direction: column; }
+  .crosssell-img { width: 100%; height: 200px; }
+}
