@@ -1041,3 +1041,131 @@ section { padding: 80px 0; }
   .navbar-toggle { display: block; }
   .hero-sm { height: 280px; }
 }
+
+/* =============================================
+   Lage & Infrastruktur
+   ============================================= */
+
+/* Sticky scroll outer wrapper */
+#lage-scroll-outer {
+  position: relative;
+}
+#lage-sticky {
+  position: sticky;
+  top: 0;
+  background: var(--white);
+  padding: 60px 0;
+  z-index: 1;
+}
+
+/* 3-spaltige Flexbox */
+.lage-infra {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  height: 480px;
+  margin-top: 40px;
+}
+
+/* Linke Spalte: space-around → Items bei 12.5%, 37.5%, 62.5%, 87.5% */
+.lage-col-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+  padding-right: 16px;
+}
+.lage-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--blue);
+  font-size: 0.82rem;
+  font-weight: 600;
+  width: 90px; /* feste Breite → alle Icons fluchten vertikal */
+}
+.lage-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--blue-xlight);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--blue-light);
+}
+.lage-icon svg {
+  width: 22px;
+  height: 22px;
+  color: var(--blue);
+}
+
+/* Mitte: volle Höhe, absolut positionierte Elemente */
+.lage-track {
+  position: relative;
+  height: 100%;
+}
+.lage-line {
+  position: absolute;
+  left: 50%;
+  top: 12.5%;
+  bottom: 12.5%;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--blue-light), var(--blue), var(--blue-light));
+  transform: translateX(-50%);
+}
+/* Dots exakt bei Mitte jeder Zeile */
+.lage-dot {
+  position: absolute;
+  left: 50%;
+  width: 11px;
+  height: 11px;
+  background: var(--blue);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 3px var(--blue-xlight);
+  z-index: 2;
+}
+.lage-car {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  top: 0;
+  transition: top 0.1s ease-out;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
+  z-index: 3;
+}
+.lage-car img { width: 100%; height: auto; display: block; }
+
+/* Rechte Spalte: space-around → Distanzen bei 12.5%, 37.5%, 62.5%, 87.5% */
+.lage-col-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding-left: 16px;
+}
+.lage-dist {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+/* Map */
+#lage-map {
+  height: 420px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+@media (max-width: 600px) {
+  .lage-grid { grid-template-columns: 1fr 60px 1fr; min-height: 360px; }
+  .lage-icon { width: 36px; height: 36px; }
+  .lage-icon svg { width: 17px; height: 17px; }
+  .lage-item { font-size: 0.74rem; gap: 6px; }
+  .lage-dist { font-size: 0.88rem; }
+  .lage-car { width: 50px; }
+  #lage-map { height: 280px; }
+}
