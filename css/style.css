@@ -1020,6 +1020,19 @@ section { padding: 80px 0; }
   .hero { height: 70vh; }
   .hero-actions { flex-direction: column; align-items: flex-start; }
 
+  /* Overflow-Prävention */
+  body { overflow-x: hidden; }
+  .container { max-width: 100%; }
+
+  /* Projekt-Detailseite */
+  .features-list { grid-template-columns: 1fr; }
+  .expose-box { flex-direction: column; gap: 12px; }
+  .expose-box .btn { width: 100%; justify-content: center; }
+
+  /* Grundriss-Buttons umbrechen statt überlaufen */
+  .gr-variant-nav { flex-wrap: wrap; gap: 8px; }
+  .gr-var-btn { padding: 8px 18px; font-size: 0.9rem; }
+
   /* Mobile Nav */
   .navbar-menu {
     display: none;
@@ -1028,18 +1041,40 @@ section { padding: 80px 0; }
     background: var(--white);
     flex-direction: column;
     align-items: stretch;
-    padding: 16px;
+    padding: 16px 12px;
     gap: 4px;
     overflow-y: auto;
+    z-index: 999;
   }
   .navbar-menu.open { display: flex; }
-  .navbar-menu a { padding: 14px 16px; border-radius: 8px; font-size: 1rem; }
-  .nav-dropdown .dropdown-menu { display: none; position: static; box-shadow: none; border: none; background: var(--blue-xlight); padding: 4px 8px; }
-  .nav-dropdown.open .dropdown-menu { display: block; }
-  .nav-dropdown > a::after { float: right; }
-  .navbar-menu .nav-cta { text-align: center; border-radius: 8px; }
+  .navbar-menu li { width: 100%; }
+  .navbar-menu a { display: block; width: 100%; padding: 16px 18px; border-radius: 10px; font-size: 1.05rem; }
+  .navbar-menu .nav-cta { text-align: center; border-radius: 10px; margin-top: 8px; }
   .navbar-toggle { display: block; }
   .hero-sm { height: 280px; }
+
+  /* Dropdown Eigenprojekte */
+  .nav-dropdown { width: 100%; }
+  .nav-dropdown > a::after {
+    float: right;
+    font-size: 1.1rem;
+    color: var(--blue);
+    font-weight: 700;
+  }
+  .nav-dropdown .dropdown-menu {
+    display: none;
+    position: static;
+    box-shadow: none;
+    border: none;
+    background: var(--blue-xlight);
+    border-radius: 10px;
+    padding: 4px 8px;
+    margin-top: 4px;
+    min-width: unset;
+    width: 100%;
+  }
+  .nav-dropdown.open .dropdown-menu { display: block; }
+  .nav-dropdown .dropdown-menu a { padding: 14px 16px; font-size: 0.95rem; }
 }
 
 /* =============================================

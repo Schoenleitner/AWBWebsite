@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const menu = document.querySelector('.navbar-menu');
   if (toggle && menu) {
     toggle.addEventListener('click', () => menu.classList.toggle('open'));
+
     // Dropdown on mobile: tap to open
     document.querySelectorAll('.nav-dropdown > a').forEach(link => {
       link.addEventListener('click', e => {
@@ -25,6 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
           e.preventDefault();
           link.parentElement.classList.toggle('open');
         }
+      });
+    });
+
+    // Menü schließen wenn ein normaler Link geklickt wird (inkl. Hash-Links wie #kontakt)
+    menu.querySelectorAll('a:not(.nav-dropdown > a)').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('open');
       });
     });
   }
