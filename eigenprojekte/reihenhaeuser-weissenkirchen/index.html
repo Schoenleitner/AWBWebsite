@@ -5,6 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reihenhäuser Weißenkirchen im Attergau – Attergauer Wohnbau GmbH</title>
   <meta name="description" content="Moderne Reihenhäuser in Weißenkirchen im Attergau – ca. 140 m², zur Miete oder Mietkauf mit garantiertem Festpreis. Übergabe Sommer 2026, bereits besichtigbar!">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.attergauer-wohnbau.at/eigenprojekte/reihenhaeuser-weissenkirchen/">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Attergauer Wohnbau GmbH">
+  <meta property="og:title" content="Reihenhäuser Weißenkirchen im Attergau – Attergauer Wohnbau GmbH">
+  <meta property="og:description" content="Moderne Reihenhäuser in Weißenkirchen im Attergau – ca. 140 m², Miete oder Mietkauf mit Festpreis. Übergabe Sommer 2026.">
+  <meta property="og:url" content="https://www.attergauer-wohnbau.at/eigenprojekte/reihenhaeuser-weissenkirchen/">
+  <meta property="og:image" content="https://www.attergauer-wohnbau.at/images/reihenhaeuser/droneumgebung.jpg">
+  <meta property="og:locale" content="de_AT">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Reihenhäuser Weißenkirchen im Attergau">
+  <meta name="twitter:description" content="Moderne Reihenhäuser, ca. 140 m², Miete oder Mietkauf. Übergabe Sommer 2026.">
+  <meta name="twitter:image" content="https://www.attergauer-wohnbau.at/images/reihenhaeuser/droneumgebung.jpg">
   <link rel="stylesheet" href="../../css/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.css"/>
 </head>
@@ -204,6 +219,15 @@
       </div>
       <div class="gallery-item" data-src="../../images/reihenhaeuser/badezimmer.jpg">
         <img src="../../images/reihenhaeuser/badezimmer.jpg" alt="Badezimmer" loading="lazy">
+      </div>
+      <div class="gallery-item" data-src="../../images/reihenhaeuser/garderobe.jpg">
+        <img src="../../images/reihenhaeuser/garderobe.jpg" alt="Garderobe" loading="lazy">
+      </div>
+      <div class="gallery-item" data-src="../../images/reihenhaeuser/kinderzimmer.jpg">
+        <img src="../../images/reihenhaeuser/kinderzimmer.jpg" alt="Kinderzimmer" loading="lazy">
+      </div>
+      <div class="gallery-item" data-src="../../images/reihenhaeuser/wohnzimmer3.jpg">
+        <img src="../../images/reihenhaeuser/wohnzimmer3.jpg" alt="Wohnzimmer" loading="lazy">
       </div>
     </div>
   </div>
@@ -451,6 +475,48 @@
     window.addEventListener('resize', () => { iconCenters = positionDots(); updateCar(); }, { passive: true });
     updateCar();
   })();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Residence",
+  "name": "Reihenhäuser Weißenkirchen im Attergau",
+  "description": "6 moderne Reihenhäuser in Weißenkirchen im Attergau. Ca. 140 m² Wohnfläche, Wärmepumpe, PV-Anlage. Zur Miete oder Mietkauf mit garantiertem Festpreis. Übergabe Sommer 2026.",
+  "url": "https://www.attergauer-wohnbau.at/eigenprojekte/reihenhaeuser-weissenkirchen/",
+  "image": "https://www.attergauer-wohnbau.at/images/reihenhaeuser/droneumgebung.jpg",
+  "numberOfRooms": "4",
+  "floorSize": { "@type": "QuantitativeValue", "value": 140, "unitCode": "MTK" },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Weißenkirchen im Attergau",
+    "postalCode": "4846",
+    "addressCountry": "AT",
+    "addressRegion": "Oberösterreich"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 47.948089,
+    "longitude": 13.433105
+  },
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "priceCurrency": "EUR",
+    "seller": {
+      "@type": "RealEstateAgent",
+      "name": "Attergauer Wohnbau GmbH",
+      "url": "https://www.attergauer-wohnbau.at/",
+      "telephone": "+436648249411"
+    }
+  },
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "Wärmepumpe", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "PV-Anlage", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Fußbodenheizung", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Kellerabteil", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Carport", "value": true }
+  ]
+}
 </script>
 </body>
 </html>

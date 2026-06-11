@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /netlify/
+
+Sitemap: https://www.attergauer-wohnbau.at/sitemap.xml
