@@ -99,6 +99,12 @@
             <div class="feature-text"><h4>Idyllische Lage</h4><p>Nahe am Attersee, in der Natur</p></div>
           </div>
         </div>
+
+        <!-- Übersicht Drohnenbild mit Hausnummern -->
+        <div style="margin-top:32px;">
+          <h3 style="font-size:1.2rem; margin-bottom:16px;">Hausübersicht</h3>
+          <img src="../../images/reihenhaeuser/grundrisse/uebersicht.png" alt="Übersicht Häuser Weißenkirchen mit Nummerierung" style="width:100%; border-radius:var(--radius-lg); box-shadow:var(--shadow);">
+        </div>
       </div>
 
       <div>
@@ -210,34 +216,34 @@
       <h2 class="section-title">Grundrisse</h2>
       <p class="section-subtitle">Verfügbare Grundrissvarianten</p>
     </div>
-    <div class="floorplans-tabs">
-      <div class="tabs-nav">
-        <button class="tab-btn active" data-tab="top14eg">TOP 1+4 – Erdgeschoss</button>
-        <button class="tab-btn" data-tab="top14og">TOP 1+4 – Obergeschoss</button>
-        <button class="tab-btn" data-tab="top25eg">TOP 2+5 – Erdgeschoss</button>
-        <button class="tab-btn" data-tab="top25og">TOP 2+5 – Obergeschoss</button>
-        <button class="tab-btn" data-tab="top36eg">TOP 3+6 – Erdgeschoss</button>
-        <button class="tab-btn" data-tab="top36og">TOP 3+6 – Obergeschoss</button>
-      </div>
-      <div id="top14eg" class="tab-panel active">
-        <img src="../../images/reihenhaeuser/grundrisse/top14-eg.png" alt="Grundriss TOP 1+4 Erdgeschoss" loading="lazy">
-      </div>
-      <div id="top14og" class="tab-panel">
-        <img src="../../images/reihenhaeuser/grundrisse/top14-og.png" alt="Grundriss TOP 1+4 Obergeschoss" loading="lazy">
-      </div>
-      <div id="top25eg" class="tab-panel">
-        <img src="../../images/reihenhaeuser/grundrisse/top25-eg.png" alt="Grundriss TOP 2+5 Erdgeschoss" loading="lazy">
-      </div>
-      <div id="top25og" class="tab-panel">
-        <img src="../../images/reihenhaeuser/grundrisse/top25-og.png" alt="Grundriss TOP 2+5 Obergeschoss" loading="lazy">
-      </div>
-      <div id="top36eg" class="tab-panel">
-        <img src="../../images/reihenhaeuser/grundrisse/top36-eg.png" alt="Grundriss TOP 3+6 Erdgeschoss" loading="lazy">
-      </div>
-      <div id="top36og" class="tab-panel">
-        <img src="../../images/reihenhaeuser/grundrisse/top36-og.png" alt="Grundriss TOP 3+6 Obergeschoss" loading="lazy">
-      </div>
+
+    <!-- Hausvariante wählen -->
+    <div class="gr-variant-nav">
+      <button class="gr-var-btn active" data-var="top14">TOP 1+4</button>
+      <button class="gr-var-btn" data-var="top25">TOP 2+5</button>
+      <button class="gr-var-btn" data-var="top36">TOP 3+6</button>
     </div>
+
+    <!-- Ein Bild pro Variante (EG+OG bereits kombiniert) -->
+    <div style="text-align:center;">
+      <img id="gr-img" src="../../images/reihenhaeuser/grundrisse/top14.png" alt="Grundriss TOP 1+4" style="max-width:100%; border-radius:var(--radius-lg); box-shadow:var(--shadow);" loading="lazy">
+    </div>
+
+    <script>
+      (function() {
+        var imgs = { top14: 'top14.png', top25: 'top25.png', top36: 'top36.png' };
+        var labels = { top14: 'TOP 1+4', top25: 'TOP 2+5', top36: 'TOP 3+6' };
+        var img = document.getElementById('gr-img');
+        document.querySelectorAll('.gr-var-btn').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            document.querySelectorAll('.gr-var-btn').forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            img.src = '../../images/reihenhaeuser/grundrisse/' + imgs[btn.dataset.var];
+            img.alt = 'Grundriss ' + labels[btn.dataset.var];
+          });
+        });
+      })();
+    </script>
   </div>
 </section>
 
@@ -390,8 +396,9 @@
     }).addTo(map);
     const icon = L.divIcon({
       className: '',
-      html: '<div style="background:#6799CC;color:#fff;font-weight:700;font-size:11px;padding:6px 10px;border-radius:8px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.2);">Reihenhäuser Weißenkirchen</div>',
-      iconAnchor: [90, 16]
+      html: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#6799CC" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.35));"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>',
+      iconSize: [32, 32],
+      iconAnchor: [16, 32]
     });
     L.marker([47.948089, 13.433105], { icon }).addTo(map).bindPopup('<strong>Reihenhäuser Weißenkirchen</strong><br>Weißenkirchen im Attergau');
   })();

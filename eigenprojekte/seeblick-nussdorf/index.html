@@ -220,22 +220,34 @@
       <h2 class="section-title">Grundrisse</h2>
       <p class="section-subtitle">Alle Stockwerke im Überblick</p>
     </div>
-    <div class="floorplans-tabs">
-      <div class="tabs-nav">
-        <button class="tab-btn active" data-tab="keller">Kellergeschoss</button>
-        <button class="tab-btn" data-tab="eg">Erdgeschoss</button>
-        <button class="tab-btn" data-tab="og">Obergeschoss</button>
-      </div>
-      <div id="keller" class="tab-panel active">
-        <img src="../../images/seeblick/grundriss-keller.jpg" alt="Grundriss Kellergeschoss Seeblick Häuser" loading="lazy">
-      </div>
-      <div id="eg" class="tab-panel">
-        <img src="../../images/seeblick/grundriss-eg.jpg" alt="Grundriss Erdgeschoss Seeblick Häuser" loading="lazy">
-      </div>
-      <div id="og" class="tab-panel">
-        <img src="../../images/seeblick/grundriss-og.jpg" alt="Grundriss Obergeschoss Seeblick Häuser" loading="lazy">
-      </div>
+    <div class="gr-variant-nav">
+      <button class="gr-var-btn active" data-gr="uebersicht">Übersicht</button>
+      <button class="gr-var-btn" data-gr="keller">Kellergeschoss</button>
+      <button class="gr-var-btn" data-gr="eg">Erdgeschoss</button>
+      <button class="gr-var-btn" data-gr="og">Obergeschoss</button>
     </div>
+    <div style="text-align:center;">
+      <img id="seeblick-gr-img" src="../../images/seeblick/uebersicht.jpg" alt="Übersicht Seeblick Häuser Nußdorf" style="max-width:100%; border-radius:var(--radius-lg); box-shadow:var(--shadow);" loading="lazy">
+    </div>
+    <script>
+      (function() {
+        var imgs = {
+          uebersicht: { src: '../../images/seeblick/uebersicht.jpg', alt: 'Übersicht Seeblick Häuser Nußdorf' },
+          keller:     { src: '../../images/seeblick/grundriss-keller.jpg', alt: 'Grundriss Kellergeschoss Seeblick Häuser' },
+          eg:         { src: '../../images/seeblick/grundriss-eg.jpg', alt: 'Grundriss Erdgeschoss Seeblick Häuser' },
+          og:         { src: '../../images/seeblick/grundriss-og.jpg', alt: 'Grundriss Obergeschoss Seeblick Häuser' },
+        };
+        var img = document.getElementById('seeblick-gr-img');
+        document.querySelectorAll('[data-gr]').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            document.querySelectorAll('[data-gr]').forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            img.src = imgs[btn.dataset.gr].src;
+            img.alt = imgs[btn.dataset.gr].alt;
+          });
+        });
+      })();
+    </script>
   </div>
 </section>
 
@@ -389,8 +401,9 @@
     }).addTo(map);
     const icon = L.divIcon({
       className: '',
-      html: '<div style="background:#6799CC;color:#fff;font-weight:700;font-size:11px;padding:6px 10px;border-radius:8px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.2);">Seeblick Häuser</div>',
-      iconAnchor: [55, 16]
+      html: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#6799CC" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.35));"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>',
+      iconSize: [32, 32],
+      iconAnchor: [16, 32]
     });
     L.marker([47.884415, 13.521080], { icon }).addTo(map).bindPopup('<strong>Seeblick Häuser Nußdorf</strong><br>Nußdorf am Attersee');
   })();
