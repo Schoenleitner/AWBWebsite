@@ -56,11 +56,12 @@ def read_html_meta(path):
     )
 
 
-def create_template(name, subject, html, key):
+def create_template(name, subject, preheader, html, key):
     """Erstellt ein E-Mail-Template. Gibt die ID zurück."""
     data = {
         "templateName": name,
         "subject":      subject,
+        "previewText":  preheader,
         "htmlContent":  html,
         "sender":       {"name": "Attergauer Wohnbau GmbH",
                          "email": "news@attergauer-wohnbau.at"},
@@ -101,7 +102,7 @@ def main():
 
             print(f"  [{i:02d}] {subject[:50]}…", end=" ", flush=True)
             try:
-                tid = create_template(tpl_name, subject, html, key)
+                tid = create_template(tpl_name, subject, preheader, html, key)
                 print(f"→ Template-ID {tid}")
                 created.append({"id": tid, "series": s["label"],
                                  "nr": i, "name": tpl_name, "subject": subject})

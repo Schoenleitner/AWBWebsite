@@ -1,0 +1,30 @@
+[
+  {
+    "id": 2,
+    "series": "Nußdorf",
+    "nr": 1,
+    "name": "AWB Nußdorf 01 – Stellen Sie sich vor … ein Morgen am Attersee",
+    "subject": "Stellen Sie sich vor … ein Morgen am Attersee"
+  },
+  {
+    "id": 3,
+    "series": "Nußdorf",
+    "nr": 2,
+    "name": "AWB Nußdorf 02 – Der See gehört einfach dazu.",
+    "subject": "Der See gehört einfach dazu."
+  },
+  {
+    "id": 4,
+    "series": "Weißenkirchen",
+    "nr": 1,
+    "name": "AWB Weißenkirchen 01 – Willkommen in Weißenkirchen im Attergau.",
+    "subject": "Willkommen in Weißenkirchen im Attergau."
+  },
+  {
+    "id": 5,
+    "series": "Weißenkirchen",
+    "nr": 2,
+    "name": "AWB Weißenkirchen 02 – Mieten oder kaufen? Beides geht.",
+    "subject": "Mieten oder kaufen? Beides geht."
+  }
+]
