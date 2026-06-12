@@ -96,7 +96,7 @@ def main():
                 errors.append(str(filename))
                 continue
 
-            subject, _ = read_html_meta(filename)
+            subject, preheader = read_html_meta(filename)
             html = filename.read_text()
             tpl_name = f"AWB {s['label']} {i:02d} – {subject[:55]}"
 
