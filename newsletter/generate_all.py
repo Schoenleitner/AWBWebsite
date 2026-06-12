@@ -58,7 +58,7 @@ NUSSDORF = [
      "Der See gehört einfach dazu.",
      ["Es gibt Orte, an die man jedes Jahr wieder zurückwill. Nußdorf am Attersee ist so ein Ort — das wissen alle, die einmal dort waren.",
       "Was wäre es, wenn dieser Ort nicht nur Ihr Urlaubsziel wäre, sondern Ihr Zuhause?",
-      "Von Ihrer Terrasse aus sehen Sie das Wasser. Im Winter liegt der See im Nebel. Im Frühling glitzert er türkis. Im Sommer hören Sie die Boote. Und im Herbst brennt der Wald auf der anderen Seite.",
+      "Von Ihrer Terrasse aus sehen Sie das Wasser. Im Winter liegt der See im Nebel. Im Frühling glitzert er türkis. Im Sommer hören Sie die Boote. Und im Herbst leuchtet das Höllengebirge drüben in einem satten Rosa.",
       "Vier Jahreszeiten. Ein Zuhause. Immer am See."],
      "drohne-1.jpg", "Attersee aus der Vogelperspektive",
      "terrasse2.jpg", "Terrasse mit Seeblick", "Ihre Terrasse — mit dem See immer im Blick."),
