@@ -1,0 +1,17 @@
+# Weiterleitungen alte URL-Struktur → neue URL-Struktur
+# 301 = permanent redirect (gut für SEO, Google übernimmt den Link-Wert)
+
+/Projekte                                           /eigenprojekte/                                     301
+/projekte                                           /eigenprojekte/                                     301
+/projekte/reihenhaeuser-weissenkirchen-im-attergau  /eigenprojekte/reihenhaeuser-weissenkirchen/        301
+/projekte/exklusive-haeuser-nussdorf-am-attersee    /eigenprojekte/seeblick-nussdorf/                   301
+/Immobilien                                         /maklerei/                                          301
+/immobilien                                         /maklerei/                                          301
+/objekte/grundstuck-nussdorf                        /maklerei/baugrundstueck-nussdorf/                  301
+/objekte/geschaftslokal-1                           /maklerei/geschaeftslokal-1/                        301
+/objekte/geschaftslokal-2                           /maklerei/geschaeftslokal-2/                        301
+/ueber-uns                                          /#ueber-uns                                         301
+/referenzen                                         /referenzen/                                        301
+/kontakt                                            /#kontakt                                           301
+/datenschutz                                        /datenschutz/                                       301
+/impressum                                          /impressum/                                         301

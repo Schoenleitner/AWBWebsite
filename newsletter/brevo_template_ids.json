@@ -1,30 +1,338 @@
 [
   {
-    "id": 8,
+    "id": 12,
     "series": "Nußdorf",
     "nr": 1,
     "name": "AWB Nußdorf 01 – Stellen Sie sich vor … ein Morgen am Attersee",
     "subject": "Stellen Sie sich vor … ein Morgen am Attersee"
   },
   {
-    "id": 9,
+    "id": 13,
     "series": "Nußdorf",
     "nr": 2,
     "name": "AWB Nußdorf 02 – Der See gehört einfach dazu.",
     "subject": "Der See gehört einfach dazu."
   },
   {
-    "id": 10,
+    "id": 14,
+    "series": "Nußdorf",
+    "nr": 3,
+    "name": "AWB Nußdorf 03 – Wo andere Urlaub machen, kommen Sie heim.",
+    "subject": "Wo andere Urlaub machen, kommen Sie heim."
+  },
+  {
+    "id": 15,
+    "series": "Nußdorf",
+    "nr": 4,
+    "name": "AWB Nußdorf 04 – Abends nach Hause kommen.",
+    "subject": "Abends nach Hause kommen."
+  },
+  {
+    "id": 16,
+    "series": "Nußdorf",
+    "nr": 5,
+    "name": "AWB Nußdorf 05 – Ihre Küche. Ihr Morgen.",
+    "subject": "Ihre Küche. Ihr Morgen."
+  },
+  {
+    "id": 17,
+    "series": "Nußdorf",
+    "nr": 6,
+    "name": "AWB Nußdorf 06 – Die Terrasse — Ihr zweites Wohnzimmer.",
+    "subject": "Die Terrasse — Ihr zweites Wohnzimmer."
+  },
+  {
+    "id": 18,
+    "series": "Nußdorf",
+    "nr": 7,
+    "name": "AWB Nußdorf 07 – Der Morgen gehört Ihnen.",
+    "subject": "Der Morgen gehört Ihnen."
+  },
+  {
+    "id": 19,
+    "series": "Nußdorf",
+    "nr": 8,
+    "name": "AWB Nußdorf 08 – Raum für alles, was zählt.",
+    "subject": "Raum für alles, was zählt."
+  },
+  {
+    "id": 20,
+    "series": "Nußdorf",
+    "nr": 9,
+    "name": "AWB Nußdorf 09 – Heizen ohne Sorgen — und ohne Überraschungen.",
+    "subject": "Heizen ohne Sorgen — und ohne Überraschungen."
+  },
+  {
+    "id": 21,
+    "series": "Nußdorf",
+    "nr": 10,
+    "name": "AWB Nußdorf 10 – Ihr Haus denkt mit.",
+    "subject": "Ihr Haus denkt mit."
+  },
+  {
+    "id": 22,
+    "series": "Nußdorf",
+    "nr": 11,
+    "name": "AWB Nußdorf 11 – Schlüsselfertig. Wirklich.",
+    "subject": "Schlüsselfertig. Wirklich."
+  },
+  {
+    "id": 23,
+    "series": "Nußdorf",
+    "nr": 12,
+    "name": "AWB Nußdorf 12 – Alles inklusive. Wirklich alles.",
+    "subject": "Alles inklusive. Wirklich alles."
+  },
+  {
+    "id": 24,
+    "series": "Nußdorf",
+    "nr": 13,
+    "name": "AWB Nußdorf 13 – Seit 1970 bauen wir Zuhause.",
+    "subject": "Seit 1970 bauen wir Zuhause."
+  },
+  {
+    "id": 25,
+    "series": "Nußdorf",
+    "nr": 14,
+    "name": "AWB Nußdorf 14 – Unser Versprechen an Sie.",
+    "subject": "Unser Versprechen an Sie."
+  },
+  {
+    "id": 26,
+    "series": "Nußdorf",
+    "nr": 15,
+    "name": "AWB Nußdorf 15 – Qualität in jedem Detail.",
+    "subject": "Qualität in jedem Detail."
+  },
+  {
+    "id": 27,
+    "series": "Nußdorf",
+    "nr": 16,
+    "name": "AWB Nußdorf 16 – Ihr Haus entsteht gerade.",
+    "subject": "Ihr Haus entsteht gerade."
+  },
+  {
+    "id": 28,
+    "series": "Nußdorf",
+    "nr": 17,
+    "name": "AWB Nußdorf 17 – Noch wenige Häuser verfügbar.",
+    "subject": "Noch wenige Häuser verfügbar."
+  },
+  {
+    "id": 29,
+    "series": "Nußdorf",
+    "nr": 18,
+    "name": "AWB Nußdorf 18 – Was kostet ein Leben am See?",
+    "subject": "Was kostet ein Leben am See?"
+  },
+  {
+    "id": 30,
+    "series": "Nußdorf",
+    "nr": 19,
+    "name": "AWB Nußdorf 19 – Wann dürfen wir Sie einladen?",
+    "subject": "Wann dürfen wir Sie einladen?"
+  },
+  {
+    "id": 31,
+    "series": "Nußdorf",
+    "nr": 20,
+    "name": "AWB Nußdorf 20 – Ihre Fragen — unsere Antworten.",
+    "subject": "Ihre Fragen — unsere Antworten."
+  },
+  {
+    "id": 32,
+    "series": "Nußdorf",
+    "nr": 21,
+    "name": "AWB Nußdorf 21 – Sommer 2026 kommt.",
+    "subject": "Sommer 2026 kommt."
+  },
+  {
+    "id": 33,
+    "series": "Nußdorf",
+    "nr": 22,
+    "name": "AWB Nußdorf 22 – Das erste Haus ist vergeben.",
+    "subject": "Das erste Haus ist vergeben."
+  },
+  {
+    "id": 34,
+    "series": "Nußdorf",
+    "nr": 23,
+    "name": "AWB Nußdorf 23 – Herzlich willkommen — als Nachbar.",
+    "subject": "Herzlich willkommen — als Nachbar."
+  },
+  {
+    "id": 35,
+    "series": "Nußdorf",
+    "nr": 24,
+    "name": "AWB Nußdorf 24 – Die letzte Gelegenheit.",
+    "subject": "Die letzte Gelegenheit."
+  },
+  {
+    "id": 36,
     "series": "Weißenkirchen",
     "nr": 1,
     "name": "AWB Weißenkirchen 01 – Willkommen in Weißenkirchen im Attergau.",
     "subject": "Willkommen in Weißenkirchen im Attergau."
   },
   {
-    "id": 11,
+    "id": 37,
     "series": "Weißenkirchen",
     "nr": 2,
     "name": "AWB Weißenkirchen 02 – Einziehen heute. Kaufpreis heute fixiert.",
     "subject": "Einziehen heute. Kaufpreis heute fixiert."
+  },
+  {
+    "id": 38,
+    "series": "Weißenkirchen",
+    "nr": 3,
+    "name": "AWB Weißenkirchen 03 – Wo Kinder draußen spielen.",
+    "subject": "Wo Kinder draußen spielen."
+  },
+  {
+    "id": 39,
+    "series": "Weißenkirchen",
+    "nr": 4,
+    "name": "AWB Weißenkirchen 04 – Ankommen nach einem langen Tag.",
+    "subject": "Ankommen nach einem langen Tag."
+  },
+  {
+    "id": 40,
+    "series": "Weißenkirchen",
+    "nr": 5,
+    "name": "AWB Weißenkirchen 05 – Kochen, Essen, Leben.",
+    "subject": "Kochen, Essen, Leben."
+  },
+  {
+    "id": 41,
+    "series": "Weißenkirchen",
+    "nr": 6,
+    "name": "AWB Weißenkirchen 06 – Der Garten gehört Ihnen.",
+    "subject": "Der Garten gehört Ihnen."
+  },
+  {
+    "id": 42,
+    "series": "Weißenkirchen",
+    "nr": 7,
+    "name": "AWB Weißenkirchen 07 – Schlafen wie zuhause — weil es Ihr Zuhause ist.",
+    "subject": "Schlafen wie zuhause — weil es Ihr Zuhause ist."
+  },
+  {
+    "id": 43,
+    "series": "Weißenkirchen",
+    "nr": 8,
+    "name": "AWB Weißenkirchen 08 – ~140 m² für Ihr Leben.",
+    "subject": "~140 m² für Ihr Leben."
+  },
+  {
+    "id": 44,
+    "series": "Weißenkirchen",
+    "nr": 9,
+    "name": "AWB Weißenkirchen 09 – Wärme ohne Rechnung-Schock.",
+    "subject": "Wärme ohne Rechnung-Schock."
+  },
+  {
+    "id": 45,
+    "series": "Weißenkirchen",
+    "nr": 10,
+    "name": "AWB Weißenkirchen 10 – Ihr Kaufpreis steht — was auch immer kommt.",
+    "subject": "Ihr Kaufpreis steht — was auch immer kommt."
+  },
+  {
+    "id": 46,
+    "series": "Weißenkirchen",
+    "nr": 11,
+    "name": "AWB Weißenkirchen 11 – Schlüsselfertig — oder nach Ihren Wünschen.",
+    "subject": "Schlüsselfertig — oder nach Ihren Wünschen."
+  },
+  {
+    "id": 47,
+    "series": "Weißenkirchen",
+    "nr": 12,
+    "name": "AWB Weißenkirchen 12 – So funktioniert unser Mietkauf — und warum er anders is",
+    "subject": "So funktioniert unser Mietkauf — und warum er anders ist."
+  },
+  {
+    "id": 48,
+    "series": "Weißenkirchen",
+    "nr": 13,
+    "name": "AWB Weißenkirchen 13 – Seit 1970 bauen wir Zuhause.",
+    "subject": "Seit 1970 bauen wir Zuhause."
+  },
+  {
+    "id": 49,
+    "series": "Weißenkirchen",
+    "nr": 14,
+    "name": "AWB Weißenkirchen 14 – Was Menschen bei uns schätzen.",
+    "subject": "Was Menschen bei uns schätzen."
+  },
+  {
+    "id": 50,
+    "series": "Weißenkirchen",
+    "nr": 15,
+    "name": "AWB Weißenkirchen 15 – Qualität, die man anfassen kann.",
+    "subject": "Qualität, die man anfassen kann."
+  },
+  {
+    "id": 51,
+    "series": "Weißenkirchen",
+    "nr": 16,
+    "name": "AWB Weißenkirchen 16 – Kommen Sie vorbei — es steht bereits.",
+    "subject": "Kommen Sie vorbei — es steht bereits."
+  },
+  {
+    "id": 52,
+    "series": "Weißenkirchen",
+    "nr": 17,
+    "name": "AWB Weißenkirchen 17 – Noch Häuser verfügbar — aber nicht mehr lange.",
+    "subject": "Noch Häuser verfügbar — aber nicht mehr lange."
+  },
+  {
+    "id": 53,
+    "series": "Weißenkirchen",
+    "nr": 18,
+    "name": "AWB Weißenkirchen 18 – Sofort kaufen oder Mietkauf — was ist besser für Sie?",
+    "subject": "Sofort kaufen oder Mietkauf — was ist besser für Sie?"
+  },
+  {
+    "id": 54,
+    "series": "Weißenkirchen",
+    "nr": 19,
+    "name": "AWB Weißenkirchen 19 – Wir laden Sie ein.",
+    "subject": "Wir laden Sie ein."
+  },
+  {
+    "id": 55,
+    "series": "Weißenkirchen",
+    "nr": 20,
+    "name": "AWB Weißenkirchen 20 – Haben Sie noch Fragen?",
+    "subject": "Haben Sie noch Fragen?"
+  },
+  {
+    "id": 56,
+    "series": "Weißenkirchen",
+    "nr": 21,
+    "name": "AWB Weißenkirchen 21 – Sommer 2026 ist näher als gedacht.",
+    "subject": "Sommer 2026 ist näher als gedacht."
+  },
+  {
+    "id": 57,
+    "series": "Weißenkirchen",
+    "nr": 22,
+    "name": "AWB Weißenkirchen 22 – Das erste Haus ist reserviert.",
+    "subject": "Das erste Haus ist reserviert."
+  },
+  {
+    "id": 58,
+    "series": "Weißenkirchen",
+    "nr": 23,
+    "name": "AWB Weißenkirchen 23 – Wir freuen uns auf Sie als Nachbarn.",
+    "subject": "Wir freuen uns auf Sie als Nachbarn."
+  },
+  {
+    "id": 59,
+    "series": "Weißenkirchen",
+    "nr": 24,
+    "name": "AWB Weißenkirchen 24 – Letzte Möglichkeit.",
+    "subject": "Letzte Möglichkeit."
   }
 ]
