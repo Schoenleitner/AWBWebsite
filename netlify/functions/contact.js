@@ -202,10 +202,14 @@ ${message}
   const listIds = [listId];
   if (newsletter) listIds.push(5); // NewsletterAWB
 
-  // Kontakt anlegen / aktualisieren (erstmal ohne Attribute zum Testen)
+  // Kontakt anlegen / aktualisieren
   const contactPayload = {
     email,
     updateEnabled: true,
+    attributes: {
+      NAME: name,
+      TEL: phone || '',
+    },
     listIds,
   };
   const contactRes = await brevo(apiKey, 'POST', '/contacts', contactPayload);
