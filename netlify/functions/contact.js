@@ -217,11 +217,13 @@ ${message}
     },
     listIds,
   };
-  await brevo(apiKey, 'POST', '/contacts', contactPayload);
+  const contactRes = await brevo(apiKey, 'POST', '/contacts', contactPayload);
 
-  // Listen explizit setzen (zuverlässiger bei bestehenden Kontakten)
+  // Listen explizit setzen
+  const listResults = [];
   for (const lid of listIds) {
-    await brevo(apiKey, 'POST', `/contacts/lists/${lid}/contacts/add`, { emails: [email] });
+    const r = await brevo(apiKey, 'POST', `/contacts/lists/${lid}/contacts/add`, { emails: [email] });
+    listResults.push({ lid, status: r.status, data: r.data });
   }
 
   // -------------------------------------------------------------------------
@@ -261,5 +263,15 @@ ${message}
     }
   }
 
-  return { statusCode: 200, body: 'OK' };
+  return {
+    statusCode: 200,
+    body: JSON.stringify({
+      ok: true,
+      debug: {
+        contactStatus: contactRes.status,
+        contactData: contactRes.data,
+        listResults,
+      },
+    }),
+  };
 };
