@@ -207,20 +207,32 @@ ${message}
   const firstName = nameParts[0] || '';
   const lastName = nameParts.slice(1).join(' ') || '';
 
-  // Schritt 1: Kontakt anlegen (nur Email + updateEnabled)
-  await brevo(apiKey, 'POST', '/contacts', { email, updateEnabled: true });
+  // Schritt 1: Kontakt anlegen mit Attributen und Listen
+  const contactPayload = {
+    email,
+    updateEnabled: true,
+    attributes: {
+      FIRSTNAME: firstName,
+      LASTNAME: lastName,
+      SMS: phone || '',
+    },
+    listIds,
+  };
+  const contactRes = await brevo(apiKey, 'POST', '/contacts', contactPayload);
+  console.log('Kontakt POST:', contactRes.status, JSON.stringify(contactRes.data));
 
-  // Schritt 2: Attribute explizit via PUT setzen (funktioniert für neue & bestehende Kontakte)
-  const updateRes = await brevo(apiKey, 'PUT', `/contacts/${encodeURIComponent(email)}`, {
+  // Schritt 2: Attribute nochmals via PUT sicherstellen (für bestehende Kontakte)
+  const encoded = encodeURIComponent(email);
+  const putRes = await brevo(apiKey, 'PUT', `/contacts/${encoded}`, {
     attributes: {
       FIRSTNAME: firstName,
       LASTNAME: lastName,
       SMS: phone || '',
     },
   });
-  console.log('Kontakt Update:', updateRes.status, JSON.stringify(updateRes.data));
+  console.log('Kontakt PUT:', putRes.status, JSON.stringify(putRes.data));
 
-  // Schritt 3: Kontakt explizit zu Listen hinzufügen
+  // Schritt 3: Listen nochmals explizit setzen
   for (const lid of listIds) {
     const addRes = await brevo(apiKey, 'POST', `/contacts/lists/${lid}/contacts/add`, { emails: [email] });
     console.log(`Liste ${lid}:`, addRes.status, JSON.stringify(addRes.data));
