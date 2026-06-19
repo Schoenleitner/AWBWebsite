@@ -212,13 +212,11 @@ ${message}
     },
     listIds,
   };
-  const contactRes = await brevo(apiKey, 'POST', '/contacts', contactPayload);
+  await brevo(apiKey, 'POST', '/contacts', contactPayload);
 
   // Listen explizit setzen
-  const listResults = [];
   for (const lid of listIds) {
-    const r = await brevo(apiKey, 'POST', `/contacts/lists/${lid}/contacts/add`, { emails: [email] });
-    listResults.push({ lid, status: r.status, data: r.data });
+    await brevo(apiKey, 'POST', `/contacts/lists/${lid}/contacts/add`, { emails: [email] });
   }
 
   // -------------------------------------------------------------------------
@@ -258,15 +256,5 @@ ${message}
     }
   }
 
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      ok: true,
-      debug: {
-        contactStatus: contactRes.status,
-        contactData: contactRes.data,
-        listResults,
-      },
-    }),
-  };
+  return { statusCode: 200, body: 'OK' };
 };
