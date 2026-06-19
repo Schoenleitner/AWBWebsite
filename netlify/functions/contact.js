@@ -100,7 +100,7 @@ exports.handler = async (event) => {
     interesse_mietkauf_schluessel,
   } = data;
 
-  if (!name || !email || !message || !privacy) {
+  if (!name || !email || !phone || !message || !privacy) {
     return { statusCode: 400, body: 'Pflichtfelder fehlen' };
   }
 
