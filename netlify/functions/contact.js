@@ -202,12 +202,17 @@ ${message}
   const listIds = [listId];
   if (newsletter) listIds.push(5); // NewsletterAWB
 
+  // Name aufteilen
+  const nameParts = name.trim().split(/\s+/);
+
   // Kontakt anlegen / aktualisieren
   const contactPayload = {
     email,
     updateEnabled: true,
     attributes: {
-      FIRSTNAME: name,
+      VORNAME: nameParts[0] || name,
+      NACHNAME: nameParts.slice(1).join(' ') || '',
+      NAME: name,
       SMS: phone || '',
     },
     listIds,
