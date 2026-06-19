@@ -207,30 +207,23 @@ ${message}
   const firstName = nameParts[0] || '';
   const lastName = nameParts.slice(1).join(' ') || '';
 
+  // Schritt 1: Kontakt anlegen/aktualisieren (nur sichere Basis-Attribute)
   const contactPayload = {
     email,
     updateEnabled: true,
     attributes: {
       FIRSTNAME: firstName,
       LASTNAME: lastName,
-      SMS: phone || '',
     },
-    listIds,
   };
 
   const contactRes = await brevo(apiKey, 'POST', '/contacts', contactPayload);
-  if (!contactRes.ok) {
-    console.error('Kontakt anlegen Fehler:', contactRes.data);
-  }
+  console.log('Kontakt API:', contactRes.status, JSON.stringify(contactRes.data));
 
-  // Kontakt explizit zu Listen hinzufügen (zuverlässiger als listIds beim Update)
+  // Schritt 2: Kontakt explizit zu Listen hinzufügen
   for (const lid of listIds) {
     const addRes = await brevo(apiKey, 'POST', `/contacts/lists/${lid}/contacts/add`, { emails: [email] });
-    if (!addRes.ok) {
-      console.error(`Liste ${lid} Fehler:`, addRes.data);
-    } else {
-      console.log(`Kontakt zu Liste ${lid} hinzugefügt`);
-    }
+    console.log(`Liste ${lid}:`, addRes.status, JSON.stringify(addRes.data));
   }
 
   // -------------------------------------------------------------------------
