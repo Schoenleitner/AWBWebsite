@@ -202,19 +202,10 @@ ${message}
   const listIds = [listId];
   if (newsletter) listIds.push(5); // NewsletterAWB
 
-  // Name aufteilen
-  const nameParts = name.trim().split(/\s+/);
-
-  // Kontakt anlegen / aktualisieren
+  // Kontakt anlegen / aktualisieren (erstmal ohne Attribute zum Testen)
   const contactPayload = {
     email,
     updateEnabled: true,
-    attributes: {
-      VORNAME: nameParts[0] || name,
-      NACHNAME: nameParts.slice(1).join(' ') || '',
-      NAME: name,
-      SMS: phone || '',
-    },
     listIds,
   };
   const contactRes = await brevo(apiKey, 'POST', '/contacts', contactPayload);
