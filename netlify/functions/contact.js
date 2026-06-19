@@ -221,7 +221,16 @@ ${message}
   const contactRes = await brevo(apiKey, 'POST', '/contacts', contactPayload);
   if (!contactRes.ok) {
     console.error('Kontakt anlegen Fehler:', contactRes.data);
-    // Kein hartes Abbrechen — E-Mail wurde bereits gesendet
+  }
+
+  // Kontakt explizit zu Listen hinzufügen (zuverlässiger als listIds beim Update)
+  for (const lid of listIds) {
+    const addRes = await brevo(apiKey, 'POST', `/contacts/lists/${lid}/contacts/add`, { emails: [email] });
+    if (!addRes.ok) {
+      console.error(`Liste ${lid} Fehler:`, addRes.data);
+    } else {
+      console.log(`Kontakt zu Liste ${lid} hinzugefügt`);
+    }
   }
 
   // -------------------------------------------------------------------------
