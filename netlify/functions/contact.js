@@ -110,12 +110,7 @@ exports.handler = async (event) => {
     return { statusCode: 400, body: 'Pflichtfelder fehlen' };
   }
 
-  // Plausibilitätsprüfung: Name muss mindestens ein Leerzeichen enthalten
-  if (!name.trim().includes(' ')) {
-    return { statusCode: 200, body: 'OK' };
-  }
-
-  const apiKey = process.env.BREVO_API_KEY;
+const apiKey = process.env.BREVO_API_KEY;
   if (!apiKey) {
     return { statusCode: 500, body: 'Konfigurationsfehler' };
   }
