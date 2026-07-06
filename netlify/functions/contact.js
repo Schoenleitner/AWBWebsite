@@ -87,6 +87,7 @@ exports.handler = async (event) => {
   }
 
   const {
+    hp_website,
     name,
     email,
     phone,
@@ -100,8 +101,18 @@ exports.handler = async (event) => {
     interesse_mietkauf_schluessel,
   } = data;
 
+  // Honeypot: Bots füllen dieses versteckte Feld aus
+  if (hp_website) {
+    return { statusCode: 200, body: 'OK' };
+  }
+
   if (!name || !email || !phone || !message || !privacy) {
     return { statusCode: 400, body: 'Pflichtfelder fehlen' };
+  }
+
+  // Plausibilitätsprüfung: Name muss mindestens ein Leerzeichen enthalten
+  if (!name.trim().includes(' ')) {
+    return { statusCode: 200, body: 'OK' };
   }
 
   const apiKey = process.env.BREVO_API_KEY;
