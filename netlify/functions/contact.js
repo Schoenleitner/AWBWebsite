@@ -88,6 +88,7 @@ exports.handler = async (event) => {
 
   const {
     hp_website,
+    recaptchaToken,
     name,
     email,
     phone,
@@ -104,6 +105,19 @@ exports.handler = async (event) => {
   // Honeypot: Bots füllen dieses versteckte Feld aus
   if (hp_website) {
     return { statusCode: 200, body: 'OK' };
+  }
+
+  // reCAPTCHA v3 verifizieren
+  const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
+  if (recaptchaSecret && recaptchaToken) {
+    const verifyRes = await fetch(
+      `https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecret}&response=${recaptchaToken}`,
+      { method: 'POST' }
+    );
+    const verifyData = await verifyRes.json();
+    if (!verifyData.success || verifyData.score < 0.5) {
+      return { statusCode: 200, body: 'OK' };
+    }
   }
 
   if (!name || !email || !phone || !message || !privacy) {

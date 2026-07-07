@@ -124,6 +124,9 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       try {
+        const recaptchaToken = await grecaptcha.execute('6LeVikgtAAAAAFGjShS6lKvxFgSwOyP60HqwJo2n', { action: 'contact' });
+        data.recaptchaToken = recaptchaToken;
+
         const res = await fetch('/.netlify/functions/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
