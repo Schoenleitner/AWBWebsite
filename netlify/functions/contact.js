@@ -119,15 +119,10 @@ exports.handler = async (event) => {
         { method: 'POST' }
       );
       const verifyData = await verifyRes.json();
-      console.log('reCAPTCHA result:', JSON.stringify(verifyData));
       if (verifyData.success === false) {
         return { statusCode: 200, body: 'OK' };
       }
-      if (verifyData.score < 0.3) {
-        return { statusCode: 200, body: 'OK' };
-      }
     } catch (err) {
-      console.error('reCAPTCHA Fehler:', err);
       // Bei API-Fehler: Anfrage trotzdem durchlassen
     }
   }
