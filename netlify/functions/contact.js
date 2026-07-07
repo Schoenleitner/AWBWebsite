@@ -107,9 +107,12 @@ exports.handler = async (event) => {
     return { statusCode: 200, body: 'OK' };
   }
 
-  // reCAPTCHA v3 verifizieren
+  // reCAPTCHA v3 verifizieren — kein Token = sofort blockieren
   const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
-  if (recaptchaSecret && recaptchaToken) {
+  if (!recaptchaToken) {
+    return { statusCode: 200, body: 'OK' };
+  }
+  if (recaptchaSecret) {
     const verifyRes = await fetch(
       `https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecret}&response=${recaptchaToken}`,
       { method: 'POST' }
