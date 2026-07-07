@@ -124,8 +124,14 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       try {
-        const recaptchaToken = await grecaptcha.execute('6LeVikgtAAAAAFGjShS6lKvxFgSwOyP60HqwJo2n', { action: 'contact' });
-        data.recaptchaToken = recaptchaToken;
+        if (typeof grecaptcha === 'undefined') {
+          if (errorMsg) { errorMsg.style.display = 'block'; }
+          btn.textContent = 'Anfrage senden';
+          btn.disabled = false;
+          return;
+        }
+        await new Promise(resolve => grecaptcha.ready(resolve));
+        data.recaptchaToken = await grecaptcha.execute('6LeVikgtAAAAAFGjShS6lKvxFgSwOyP60HqwJo2n', { action: 'contact' });
 
         const res = await fetch('/.netlify/functions/contact', {
           method: 'POST',
