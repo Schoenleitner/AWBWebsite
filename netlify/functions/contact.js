@@ -272,7 +272,7 @@ ${message}
           const contactRes = await brevo(apiKey, 'GET', `/contacts/${encodeURIComponent(email)}`);
           if (contactRes.ok && contactRes.data && contactRes.data.id) {
             await brevo(apiKey, 'PATCH', `/crm/deals/${dealId}/link-unlink`, {
-              linkContactIds: [contactRes.data.id],
+              linkContactIds: [parseInt(contactRes.data.id)],
             }).catch(err => console.error('Deal-Verknüpfung Fehler:', err));
           }
 
