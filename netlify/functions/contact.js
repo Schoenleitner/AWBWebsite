@@ -119,7 +119,7 @@ exports.handler = async (event) => {
         { method: 'POST' }
       );
       const verifyData = await verifyRes.json();
-      if (verifyData.success === false) {
+      if (!verifyData.success || verifyData.score < 0.3) {
         return { statusCode: 200, body: 'OK' };
       }
     } catch (err) {
