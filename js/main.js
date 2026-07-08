@@ -142,6 +142,13 @@ document.addEventListener('DOMContentLoaded', () => {
           form.reset();
           if (successMsg) { successMsg.style.display = 'block'; }
           form.style.display = 'none';
+        } else if (res.status === 400) {
+          if (errorMsg) {
+            errorMsg.innerHTML = 'Ihre Anfrage konnte leider nicht automatisch verarbeitet werden. Bitte kontaktieren Sie uns direkt:<br><strong>Tel.: <a href="tel:+4376676409-42">+43 7667 6409-42</a></strong> oder <strong><a href="mailto:team@attergauer-wohnbau.at">team@attergauer-wohnbau.at</a></strong>';
+            errorMsg.style.display = 'block';
+          }
+          btn.textContent = 'Anfrage senden';
+          btn.disabled = false;
         } else {
           throw new Error('Server error');
         }

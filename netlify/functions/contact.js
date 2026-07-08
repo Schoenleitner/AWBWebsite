@@ -120,7 +120,7 @@ exports.handler = async (event) => {
       );
       const verifyData = await verifyRes.json();
       if (!verifyData.success || verifyData.score < 0.3) {
-        return { statusCode: 200, body: 'OK' };
+        return { statusCode: 400, body: 'Captcha fehlgeschlagen' };
       }
     } catch (err) {
       // Bei API-Fehler: Anfrage trotzdem durchlassen
@@ -247,10 +247,9 @@ ${message}
   }
 
   // -------------------------------------------------------------------------
-  // 4. Deal anlegen (nur bei Eigenprojekten)
+  // 4. Deal anlegen (für alle Anfragen)
   // -------------------------------------------------------------------------
-  if (isEigenprojekt(propertyObject)) {
-    try {
+  try {
       const pipelineInfo = await getPipelineStage(apiKey);
 
       if (pipelineInfo) {
@@ -266,21 +265,31 @@ ${message}
         const dealRes = await brevo(apiKey, 'POST', '/crm/deals', dealPayload);
 
         if (dealRes.ok && dealRes.data && dealRes.data.id) {
-          // Kontakt mit Deal verknüpfen
-          await brevo(apiKey, 'PATCH', `/crm/deals/${dealRes.data.id}`, {
-            linkedContacts: [{ email }],
-          }).catch(err => console.error('Deal-Verknüpfung Fehler:', err));
+          const dealId = dealRes.data.id;
 
-          console.log(`Deal angelegt: ${dealName} (ID: ${dealRes.data.id})`);
+          // Kontakt-ID holen und mit Deal verknüpfen
+          const contactRes = await brevo(apiKey, 'GET', `/contacts/${encodeURIComponent(email)}`);
+          if (contactRes.ok && contactRes.data && contactRes.data.id) {
+            await brevo(apiKey, 'PATCH', `/crm/deals/${dealId}`, {
+              linkedContactsIds: [contactRes.data.id],
+            }).catch(err => console.error('Deal-Verknüpfung Fehler:', err));
+          }
+
+          // Nachricht als Notiz im Deal hinterlegen
+          if (message) {
+            await brevo(apiKey, 'POST', '/crm/notes', {
+              note: message,
+              dealIds: [dealId],
+            }).catch(err => console.error('Notiz Fehler:', err));
+          }
         } else {
           console.error('Deal anlegen Fehler:', dealRes.data);
         }
       } else {
         console.error('Pipeline "Attergauer Wohnbau" nicht gefunden');
       }
-    } catch (err) {
-      console.error('Deal Exception:', err);
-    }
+  } catch (err) {
+    console.error('Deal Exception:', err);
   }
 
   return { statusCode: 200, body: 'OK' };
