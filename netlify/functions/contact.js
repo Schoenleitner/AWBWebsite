@@ -275,7 +275,7 @@ ${message}
         debugInfo.contactId = contactRes.data?.id;
 
         if (contactRes.ok && contactRes.data && contactRes.data.id) {
-          const linkRes = await brevo(apiKey, 'PATCH', `/crm/deals/${dealId}/link-unlink`, {
+          const linkRes = await brevo(apiKey, 'PATCH', `/crm/deals/link-unlink/${dealId}`, {
             linkContactIds: [parseInt(contactRes.data.id)],
           });
           debugInfo.linkStatus = linkRes.status;
