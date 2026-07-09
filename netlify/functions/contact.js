@@ -249,51 +249,52 @@ ${message}
   // -------------------------------------------------------------------------
   // 4. Deal anlegen (für alle Anfragen)
   // -------------------------------------------------------------------------
+  let debugInfo = null;
   try {
-      const pipelineInfo = await getPipelineStage(apiKey);
+    const pipelineInfo = await getPipelineStage(apiKey);
 
-      if (pipelineInfo) {
-        const dealName = `${name} – ${propertyObject}`;
-        const dealPayload = {
-          name: dealName,
-          attributes: {
-            pipeline: pipelineInfo.pipelineId,
-            deal_stage: pipelineInfo.stageId,
-          },
-        };
+    if (pipelineInfo) {
+      const dealName = `${name} – ${propertyObject || subject || 'Allgemeine Anfrage'}`;
+      const dealPayload = {
+        name: dealName,
+        attributes: {
+          pipeline: pipelineInfo.pipelineId,
+          deal_stage: pipelineInfo.stageId,
+        },
+      };
 
-        const dealRes = await brevo(apiKey, 'POST', '/crm/deals', dealPayload);
+      const dealRes = await brevo(apiKey, 'POST', '/crm/deals', dealPayload);
+      debugInfo = { dealStatus: dealRes.status, dealData: dealRes.data };
 
-        if (dealRes.ok && dealRes.data && dealRes.data.id) {
-          const dealId = dealRes.data.id;
+      if (dealRes.ok && dealRes.data && dealRes.data.id) {
+        const dealId = dealRes.data.id;
 
-          // Kontakt-ID holen und mit Deal verknüpfen
-          const contactRes = await brevo(apiKey, 'GET', `/contacts/${encodeURIComponent(email)}`);
-          let debugInfo = { contactStatus: contactRes.status, contactId: contactRes.data?.id };
-          if (contactRes.ok && contactRes.data && contactRes.data.id) {
-            const linkRes = await brevo(apiKey, 'PATCH', `/crm/deals/${dealId}/link-unlink`, {
-              linkContactIds: [parseInt(contactRes.data.id)],
-            });
-            debugInfo.linkStatus = linkRes.status;
-            debugInfo.linkData = linkRes.data;
-          }
-          debugInfo.dealId = dealId;
+        // Kontakt-ID holen und mit Deal verknüpfen
+        const contactRes = await brevo(apiKey, 'GET', `/contacts/${encodeURIComponent(email)}`);
+        debugInfo.contactStatus = contactRes.status;
+        debugInfo.contactId = contactRes.data?.id;
 
-          // Nachricht als Notiz im Deal hinterlegen
-          if (message) {
-            await brevo(apiKey, 'POST', '/crm/notes', {
-              text: message,
-              dealIds: [dealId],
-            }).catch(err => console.error('Notiz Fehler:', err));
-          }
-        } else {
-          console.error('Deal anlegen Fehler:', dealRes.data);
+        if (contactRes.ok && contactRes.data && contactRes.data.id) {
+          const linkRes = await brevo(apiKey, 'PATCH', `/crm/deals/${dealId}/link-unlink`, {
+            linkContactIds: [parseInt(contactRes.data.id)],
+          });
+          debugInfo.linkStatus = linkRes.status;
+          debugInfo.linkData = linkRes.data;
         }
-      } else {
-        console.error('Pipeline "Attergauer Wohnbau" nicht gefunden');
+
+        // Nachricht als Notiz im Deal hinterlegen
+        if (message) {
+          await brevo(apiKey, 'POST', '/crm/notes', {
+            text: message,
+            dealIds: [dealId],
+          }).catch(err => console.error('Notiz Fehler:', err));
+        }
       }
+    } else {
+      debugInfo = { error: 'Pipeline nicht gefunden' };
+    }
   } catch (err) {
-    console.error('Deal Exception:', err);
+    debugInfo = { error: err.message };
   }
 
   return { statusCode: 200, body: JSON.stringify({ ok: true, debug: typeof debugInfo !== 'undefined' ? debugInfo : null }) };
