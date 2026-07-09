@@ -269,13 +269,15 @@ ${message}
 
           // Kontakt-ID holen und mit Deal verknüpfen
           const contactRes = await brevo(apiKey, 'GET', `/contacts/${encodeURIComponent(email)}`);
+          let debugInfo = { contactStatus: contactRes.status, contactId: contactRes.data?.id };
           if (contactRes.ok && contactRes.data && contactRes.data.id) {
-            await brevo(apiKey, 'PATCH', `/crm/deals/${dealId}/link-unlink`, {
+            const linkRes = await brevo(apiKey, 'PATCH', `/crm/deals/${dealId}/link-unlink`, {
               linkContactIds: [parseInt(contactRes.data.id)],
             });
-          } else {
-            console.error('Kontakt GET fehlgeschlagen:', contactRes.status, JSON.stringify(contactRes.data));
+            debugInfo.linkStatus = linkRes.status;
+            debugInfo.linkData = linkRes.data;
           }
+          debugInfo.dealId = dealId;
 
           // Nachricht als Notiz im Deal hinterlegen
           if (message) {
@@ -294,5 +296,5 @@ ${message}
     console.error('Deal Exception:', err);
   }
 
-  return { statusCode: 200, body: 'OK' };
+  return { statusCode: 200, body: JSON.stringify({ ok: true, debug: typeof debugInfo !== 'undefined' ? debugInfo : null }) };
 };
