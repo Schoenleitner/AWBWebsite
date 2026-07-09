@@ -268,12 +268,13 @@ ${message}
           const dealId = dealRes.data.id;
 
           // Kontakt-ID holen und mit Deal verknüpfen
-          // Kontakt-ID holen und mit Deal verknüpfen
           const contactRes = await brevo(apiKey, 'GET', `/contacts/${encodeURIComponent(email)}`);
           if (contactRes.ok && contactRes.data && contactRes.data.id) {
             await brevo(apiKey, 'PATCH', `/crm/deals/${dealId}/link-unlink`, {
               linkContactIds: [parseInt(contactRes.data.id)],
-            }).catch(err => console.error('Deal-Verknüpfung Fehler:', err));
+            });
+          } else {
+            console.error('Kontakt GET fehlgeschlagen:', contactRes.status, JSON.stringify(contactRes.data));
           }
 
           // Nachricht als Notiz im Deal hinterlegen
