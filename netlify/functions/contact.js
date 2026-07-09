@@ -297,5 +297,5 @@ ${message}
     debugInfo = { error: err.message };
   }
 
-  return { statusCode: 200, body: JSON.stringify({ ok: true, debug: typeof debugInfo !== 'undefined' ? debugInfo : null }) };
+  return { statusCode: 200, body: 'OK' };
 };
