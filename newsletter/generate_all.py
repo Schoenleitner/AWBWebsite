@@ -314,7 +314,7 @@ WEISSENKIRCHEN = [
      "Ankommen. Bleiben. Zuhause sein.",
      ["Es gibt Orte, die man sucht — und Orte, die man findet. Weißenkirchen im Attergau ist ein solcher Ort.",
       "Ruhige Lage, grüne Umgebung, kurze Wege in alle Richtungen. Und jetzt: neue Reihenhäuser, die genau dazu passen.",
-      "Die Reihenhäuser Weißenkirchen bieten Ihnen modernes Wohnen auf ~140 m² — mit Garten, Garage, hochwertiger Ausstattung und einem Festpreis, der keine Überraschungen kennt.",
+      "Die Reihenhäuser Weißenkirchen bieten Ihnen modernes Wohnen auf ~140 m² — mit Garten, Carport, hochwertiger Ausstattung und einem Festpreis, der keine Überraschungen kennt.",
       "In den nächsten Wochen nehmen wir Sie mit — durch Räume, Details und alles, was Ihr neues Zuhause ausmacht."],
      "droneumgebung.jpg", "Weißenkirchen im Attergau Luftbild",
      "fassade.jpg", "Reihenhäuser Weißenkirchen Fassade", "Weißenkirchen im Attergau — Ihr neues Zuhause."),
@@ -335,7 +335,7 @@ WEISSENKIRCHEN = [
      "Dienstag, Woche 2",
      "Für Familien gemacht.",
      ["Was braucht eine Familie wirklich? Platz. Einen Garten. Ruhige Straßen. Nachbarn, die man kennt.",
-      "Die Reihenhäuser Weißenkirchen liegen in einer ruhigen, familienfreundlichen Lage — mit Garten für die Kinder, Garage für das Auto und genug Platz für alle.",
+      "Die Reihenhäuser Weißenkirchen liegen in einer ruhigen, familienfreundlichen Lage — mit Garten für die Kinder, Carport für das Auto und genug Platz für alle.",
       "Schule, Kindergarten, Einkaufen — alles in der Nähe. Und trotzdem: Natur, Stille, Luft.",
       "Ein Zuhause, in dem Kinder aufwachsen können. Und Eltern durchatmen."],
      "fassade.jpg", "Reihenhäuser Weißenkirchen Außenansicht",
@@ -390,7 +390,7 @@ WEISSENKIRCHEN = [
      "Freitag, Woche 4",
      "Endlich: echter Platz.",
      ["~140 m² klingen zunächst nach einer Zahl. Aber hinter dieser Zahl steckt: ein Wohnzimmer, das atmet. Eine Küche, die Platz lässt. Schlafzimmer, die mehr sind als Durchgangsräume. Ein Bad, das Sie morgens nicht stresst.",
-      "Dazu: Garage, Keller, Garten. Alles, was eine Familie wirklich braucht.",
+      "Dazu: Carport, Keller, Garten. Alles, was eine Familie wirklich braucht.",
       "Die Reihenhäuser Weißenkirchen sind nicht überdimensioniert — aber sie sind durchdacht. Jeder Quadratmeter hat einen Zweck.",
       "Das merkt man beim Einziehen. Und noch mehr beim Wohnen."],
      "wohnzimmer3.jpg", "Großzügiger Wohnbereich",
@@ -645,7 +645,7 @@ def make_html(nr, series, betreff, preheader, versand, headline, body_paras,
                 <tr>
                   <td style="border-radius:50px; background-color:#6799CC;">
                     <a href="{cta["href"]}"
-                       style="display:inline-block; padding:14px 32px; font-size:15px; font-weight:600; color:#ffffff; text-decoration:none; border-radius:50px; letter-spacing:0.3px;">
+                       style="display:inline-block; padding:14px 32px; font-size:15px; font-weight:600; color:#ffffff; text-decoration:none !important; border-bottom:none !important; border-radius:50px; letter-spacing:0.3px;">
                       {cta["text"]}
                     </a>
                   </td>
