@@ -3,6 +3,19 @@
 
 import os
 
+def ent(text):
+    """Convert special chars to HTML entities for safe copy-paste."""
+    return (text
+        .replace('ä', '&auml;').replace('ö', '&ouml;').replace('ü', '&uuml;')
+        .replace('Ä', '&Auml;').replace('Ö', '&Ouml;').replace('Ü', '&Uuml;')
+        .replace('ß', '&szlig;')
+        .replace('—', '&mdash;').replace('–', '&ndash;')
+        .replace('→', '&rarr;').replace('…', '&hellip;')
+        .replace('²', '&sup2;').replace('·', '&middot;')
+        .replace('"', '&ldquo;').replace('"', '&rdquo;')
+        .replace('„', '&bdquo;')
+    )
+
 BASE = "/Users/michael/Documents/Claude/AWBWebsite/newsletter"
 IMG_N = "https://www.attergauer-wohnbau.at/images/seeblick/"
 IMG_W = "https://www.attergauer-wohnbau.at/images/reihenhaeuser/"
@@ -579,10 +592,22 @@ def make_html(nr, series, betreff, preheader, versand, headline, body_paras,
               img_base, ctas, url, subtitle, kennzahlen):
     cta = ctas[(nr - 1) % 4]
     paras_html = "\n".join(
-        f'<p style="margin:0 0 16px 0; font-size:16px; color:#4a6070; line-height:1.8;">{p}</p>'
+        f'<p style="margin:0 0 16px 0; font-size:16px; color:#4a6070; line-height:1.8;">{ent(p)}</p>'
         for p in body_paras
     )
     kenn = kennzahlen
+    e_betreff    = ent(betreff)
+    e_preheader  = ent(preheader)
+    e_headline   = ent(headline)
+    e_subtitle   = ent(subtitle)
+    e_cta_intro  = ent(cta["intro"])
+    e_cta_text   = ent(cta["text"])
+    e_hero_alt   = ent(hero_alt)
+    e_extra_alt  = ent(extra_alt)
+    e_extra_cap  = ent(extra_caption)
+    e_k0v = ent(kenn[0][0]); e_k0l = ent(kenn[0][1])
+    e_k1v = ent(kenn[1][0]); e_k1l = ent(kenn[1][1])
+    e_k2v = ent(kenn[2][0]); e_k2l = ent(kenn[2][1])
     return f"""<!DOCTYPE html>
 <html lang="de">
 <head>
@@ -593,13 +618,13 @@ def make_html(nr, series, betreff, preheader, versand, headline, body_paras,
     PREHEADER: {preheader}
     VERSAND:   {versand}
   -->
-  <title>{series} – Newsletter {nr:02d}</title>
+  <title>{ent(series)} &ndash; Newsletter {nr:02d}</title>
   <style>@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');</style>
 </head>
 <body style="margin:0; padding:0; background-color:#f4f7fb; font-family:Arial,Helvetica,sans-serif;">
 
   <div style="display:none; max-height:0; overflow:hidden; mso-hide:all;">
-    {preheader}&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌
+    {e_preheader}&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;
   </div>
 
   <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f4f7fb;">
@@ -614,7 +639,7 @@ def make_html(nr, series, betreff, preheader, versand, headline, body_paras,
                 Attergauer Wohnbau
               </p>
               <p style="margin:8px 0 0 0; font-size:11px; color:rgba(255,255,255,0.8); letter-spacing:2.5px; text-transform:uppercase;">
-                {subtitle}
+                {e_subtitle}
               </p>
             </td>
           </tr>
@@ -622,7 +647,7 @@ def make_html(nr, series, betreff, preheader, versand, headline, body_paras,
           <!-- HERO -->
           <tr>
             <td style="padding:0; line-height:0; background-color:#dce8f4; min-height:260px; font-size:0;">
-              <img src="{img_base}{hero_img}" alt="{hero_alt}" width="600"
+              <img src="{img_base}{hero_img}" alt="{e_hero_alt}" width="600"
                    style="width:100%; max-width:600px; height:auto; display:block; border:0;">
             </td>
           </tr>
@@ -631,7 +656,7 @@ def make_html(nr, series, betreff, preheader, versand, headline, body_paras,
           <tr>
             <td style="padding:40px 40px 36px 40px;">
               <h1 style="margin:0 0 20px 0; font-size:28px; color:#1a2a3a; line-height:1.3; font-family:Georgia,serif; font-weight:400;">
-                {headline}
+                {e_headline}
               </h1>
               <p style="margin:0 0 16px 0; font-size:16px; color:#4a6070; line-height:1.8;">
                 Guten Tag {{{{ contact.FIRSTNAME }}}},
@@ -640,13 +665,13 @@ def make_html(nr, series, betreff, preheader, versand, headline, body_paras,
 {paras_html}
 
               <hr style="border:none; border-top:1px solid #e8f0f8; margin:32px 0 28px 0;">
-              <p style="margin:0 0 20px 0; font-size:15px; color:#4a6070; line-height:1.7;">{cta["intro"]}</p>
+              <p style="margin:0 0 20px 0; font-size:15px; color:#4a6070; line-height:1.7;">{e_cta_intro}</p>
               <table cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td style="border-radius:50px; background-color:#6799CC;">
                     <a href="{cta["href"]}"
                        style="display:inline-block; padding:14px 32px; font-size:15px; font-weight:600; color:#ffffff; text-decoration:none !important; border-bottom:none !important; border-radius:50px; letter-spacing:0.3px;">
-                      {cta["text"]}
+                      {e_cta_text}
                     </a>
                   </td>
                 </tr>
@@ -658,10 +683,10 @@ def make_html(nr, series, betreff, preheader, versand, headline, body_paras,
           <tr>
             <td style="padding:0 40px 32px 40px; background-color:#ffffff;">
               <div style="border-radius:12px; overflow:hidden; background-color:#dce8f4; line-height:0; min-height:180px;">
-                <img src="{img_base}{extra_img}" alt="{extra_alt}" width="520"
+                <img src="{img_base}{extra_img}" alt="{e_extra_alt}" width="520"
                      style="width:100%; height:auto; display:block; border:0; border-radius:12px;">
               </div>
-              <p style="margin:10px 0 0 0; font-size:12px; color:#aabccc; text-align:center; font-style:italic;">{extra_caption}</p>
+              <p style="margin:10px 0 0 0; font-size:12px; color:#aabccc; text-align:center; font-style:italic;">{e_extra_cap}</p>
             </td>
           </tr>
 
@@ -671,18 +696,18 @@ def make_html(nr, series, betreff, preheader, versand, headline, body_paras,
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td width="33%" style="text-align:center; padding:8px;">
-                    <p style="margin:0; font-size:15px; font-weight:700; color:#6799CC; line-height:1.2;">{kenn[0][0]}</p>
-                    <p style="margin:4px 0 0 0; font-size:11px; color:#7a9ab0; text-transform:uppercase; letter-spacing:1.5px;">{kenn[0][1]}</p>
+                    <p style="margin:0; font-size:15px; font-weight:700; color:#6799CC; line-height:1.2;">{e_k0v}</p>
+                    <p style="margin:4px 0 0 0; font-size:11px; color:#7a9ab0; text-transform:uppercase; letter-spacing:1.5px;">{e_k0l}</p>
                   </td>
                   <td width="1px" style="background:#dde8f2;">&nbsp;</td>
                   <td width="33%" style="text-align:center; padding:8px;">
-                    <p style="margin:0; font-size:22px; font-weight:700; color:#6799CC; line-height:1;">{kenn[1][0]}</p>
-                    <p style="margin:4px 0 0 0; font-size:11px; color:#7a9ab0; text-transform:uppercase; letter-spacing:1.5px;">{kenn[1][1]}</p>
+                    <p style="margin:0; font-size:22px; font-weight:700; color:#6799CC; line-height:1;">{e_k1v}</p>
+                    <p style="margin:4px 0 0 0; font-size:11px; color:#7a9ab0; text-transform:uppercase; letter-spacing:1.5px;">{e_k1l}</p>
                   </td>
                   <td width="1px" style="background:#dde8f2;">&nbsp;</td>
                   <td width="33%" style="text-align:center; padding:8px;">
-                    <p style="margin:0; font-size:15px; font-weight:700; color:#6799CC; line-height:1.2;">{kenn[2][0]}</p>
-                    <p style="margin:4px 0 0 0; font-size:11px; color:#7a9ab0; text-transform:uppercase; letter-spacing:1.5px;">{kenn[2][1]}</p>
+                    <p style="margin:0; font-size:15px; font-weight:700; color:#6799CC; line-height:1.2;">{e_k2v}</p>
+                    <p style="margin:4px 0 0 0; font-size:11px; color:#7a9ab0; text-transform:uppercase; letter-spacing:1.5px;">{e_k2l}</p>
                   </td>
                 </tr>
               </table>
