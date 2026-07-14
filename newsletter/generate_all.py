@@ -721,19 +721,19 @@ def make_html(nr, series, betreff, preheader, versand, headline, body_paras,
                 Attergauer Wohnbau GmbH
               </p>
               <p style="margin:0 0 16px 0; font-size:13px; color:#7a9ab0; line-height:1.8;">
-                Ihr regionaler Bauträger seit 1970<br>
-                4880 St. Georgen im Attergau · Österreich<br>
+                Ihr regionaler Bautr&auml;ger seit 1970<br>
+                4880 St. Georgen im Attergau &middot; &Ouml;sterreich<br>
                 <a href="tel:+436648249411" style="color:#6799CC; text-decoration:none;">+43 664 82 49 411</a>
-                &nbsp;·&nbsp;
+                &nbsp;&middot;&nbsp;
                 <a href="mailto:office@attergauer-wohnbau.at" style="color:#6799CC; text-decoration:none;">office@attergauer-wohnbau.at</a>
               </p>
               <hr style="border:none; border-top:1px solid #2a3d52; margin:0 0 16px 0;">
               <p style="margin:0; font-size:12px; color:#4a6070; line-height:1.7;">
                 Sie erhalten diese E-Mail, weil Sie Interesse an unseren Projekten bekundet haben.<br>
                 <a href="{{{{ unsubscribe }}}}" style="color:#6799CC; text-decoration:underline;">Vom Newsletter abmelden</a>
-                &nbsp;·&nbsp;
+                &nbsp;&middot;&nbsp;
                 <a href="https://www.attergauer-wohnbau.at/datenschutz/" style="color:#6799CC; text-decoration:underline;">Datenschutz</a>
-                &nbsp;·&nbsp;
+                &nbsp;&middot;&nbsp;
                 <a href="https://www.attergauer-wohnbau.at/impressum/" style="color:#6799CC; text-decoration:underline;">Impressum</a>
               </p>
             </td>
