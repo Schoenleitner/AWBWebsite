@@ -410,11 +410,11 @@ WEISSENKIRCHEN = [
      "garderobe.jpg", "Eingangsbereich und Garderobe", "Durchdacht bis in den letzten Winkel."),
 
     (9, "Wärme ohne Rechnung-Schock.",
-     "Luft-Wärmepumpe und hochwertige Dämmung — Ihre Energiekosten bleiben planbar.",
+     "Erdwärmepumpe und hochwertige Dämmung — Ihre Energiekosten bleiben planbar.",
      "Dienstag, Woche 5",
      "Günstig heizen. Wirklich.",
      ["Die Energiekosten sind ein Thema, das bleibt. Wer jetzt ein Haus kauft oder mietet, denkt zwangsläufig daran.",
-      "Die Reihenhäuser Weißenkirchen sind mit moderner Luft-Wärmepumpe ausgestattet — kein Gas, kein Öl, keine Abhängigkeit von schwankenden Preisen.",
+      "Die Reihenhäuser Weißenkirchen sind mit moderner Erdwärmepumpe ausgestattet — kein Gas, kein Öl, keine Abhängigkeit von schwankenden Preisen.",
       "Dazu: hochwertige Dämmung nach aktuellem Standard, Fußbodenheizung für gleichmäßige Wärme, niedrige Betriebskosten.",
       "Planbar warm. Planbar günstig. Das ist der Standard, den Sie verdienen."],
      "droneumgebung.jpg", "Weißenkirchen im Attergau",
