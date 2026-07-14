@@ -418,7 +418,7 @@ WEISSENKIRCHEN = [
       "Dazu hochwertige Dämmung und Fußbodenheizung für gleichmäßige, günstige Wärme. Und eine zentrale Wohnraumlüftung mit Wärmerückgewinnung, die im Winter die Wärme im Haus hält — für frische Luft und niedrige Betriebskosten.",
       "Planbar warm. Planbar günstig. Das ist der Standard, den Sie verdienen."],
      "wohnzimmer.jpg", "Gemütlicher Wohnbereich mit Fußbodenheizung",
-     "fassade.jpg", "Reihenhäuser Weißenkirchen", "Modern, effizient, nachhaltig gebaut."),
+     "droneumgebung.jpg", "Reihenhäuser Weißenkirchen im Attergau von oben", "Modern, effizient, nachhaltig gebaut."),
 
     (10, "Ihr Kaufpreis steht — was auch immer kommt.",
      "Festpreis-Garantie: Heute fixiert, in 10 Jahren noch gültig. So schützen Sie sich vor dem Markt.",
