@@ -417,7 +417,7 @@ WEISSENKIRCHEN = [
       "Die Reihenhäuser Weißenkirchen sind mit moderner Erdwärmepumpe ausgestattet — kein Gas, kein Öl, keine Abhängigkeit von schwankenden Preisen. Und auf jedem Dach erzeugt eine eigene Photovoltaik-Anlage Ihren Strom gleich selbst. Einen Hausspeicher können Sie auf Wunsch ergänzen.",
       "Dazu hochwertige Dämmung und Fußbodenheizung für gleichmäßige, günstige Wärme. Und eine zentrale Wohnraumlüftung mit Wärmerückgewinnung, die im Winter die Wärme im Haus hält — für frische Luft und niedrige Betriebskosten.",
       "Planbar warm. Planbar günstig. Das ist der Standard, den Sie verdienen."],
-     "droneumgebung.jpg", "Weißenkirchen im Attergau",
+     "wohnzimmer.jpg", "Gemütlicher Wohnbereich mit Fußbodenheizung",
      "fassade.jpg", "Reihenhäuser Weißenkirchen", "Modern, effizient, nachhaltig gebaut."),
 
     (10, "Ihr Kaufpreis steht — was auch immer kommt.",
