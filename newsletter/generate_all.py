@@ -425,7 +425,7 @@ WEISSENKIRCHEN = [
      "Freitag, Woche 5",
      "Heute fixiert. Für immer sicher.",
      ["Immobilienpreise steigen, Zinsen schwanken, Baukosten entwickeln sich unvorhersehbar. Wer heute wartet, zahlt morgen mehr — das haben die vergangenen Jahre deutlich gezeigt.",
-      "Unser Mietkauf-Modell schafft hier Sicherheit: Zu Beginn leisten Sie einen Grundanteil, anschließend zahlen Sie eine monatliche Miete. Der Kaufpreis wird bereits heute vertraglich festgelegt — und bleibt über die gesamte Laufzeit unverändert, unabhängig von der Marktentwicklung.",
+      "Unser Mietkauf-Modell schafft hier Sicherheit: Zu Beginn leisten Sie einen Grundanteil, anschließend zahlen Sie eine monatliche Miete — die fix bleibt und nicht an den Index angepasst wird. Und der Kaufpreis wird bereits heute vertraglich festgelegt, unabhängig von der späteren Marktentwicklung.",
       "Das ist kein Werbeversprechen, sondern eine vertraglich garantierte Festpreiszusage — ein Modell, das in dieser Form die wenigsten Bauträger sowie gemeinnützige Wohnbaugenossenschaften anbieten. Bei uns ist es fester Bestandteil. Je nach Preisentwicklung kann sich daraus für Sie ein erheblicher finanzieller Vorteil ergeben.",
       "Selbstverständlich können Sie sich auch für den sofortigen Direktkauf entscheiden — ebenfalls zum garantierten Festpreis, ohne Nachforderungen und ohne Kleingedrucktes."],
      "fassade.jpg", "Reihenhäuser Weißenkirchen Fassade",
