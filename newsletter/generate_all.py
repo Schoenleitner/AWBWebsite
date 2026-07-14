@@ -137,7 +137,7 @@ NUSSDORF = [
      "Platz. Echter Platz.",
      ["Kennen Sie das Gefühl, dass die Wohnung irgendwie nie ganz reicht? Dass man immer zwischen Dingen abwägen muss — Gästezimmer oder Büro? Abstellraum oder Hobbyraum?",
       "Mit ~180 m² stellen Sie sich diese Fragen nicht mehr. Es gibt Platz für Gäste und Büro. Für die Fahrräder und die Skiausrüstung. Für Kinder und Ruhe.",
-      "Die Seeblick Häuser bieten nicht nur Fläche — sondern durchdachte Raumaufteilung. Großzügige Wohnbereiche, funktionale Nebenräume, eine Garage.",
+      "Die Seeblick Häuser bieten nicht nur Fläche — sondern durchdachte Raumaufteilung. Großzügige Wohnbereiche, funktionale Nebenräume, ein Doppelcarport für zwei Autos.",
       "Endlich ein Zuhause, das zu Ihrem Leben passt — und nicht umgekehrt."],
      "galerie.jpg", "Innenansicht Seeblick Haus",
      "esszimmer.jpg", "Heller Wohn-Essbereich", "Großzügig, hell, durchdacht."),
