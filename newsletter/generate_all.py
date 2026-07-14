@@ -351,7 +351,7 @@ WEISSENKIRCHEN = [
       "Die Reihenhäuser Weißenkirchen liegen in einer ruhigen, familienfreundlichen Lage — mit Garten für die Kinder, zwei Stellplätzen fürs Auto und genug Platz für alle.",
       "Schule und Kindergarten gleich in der Nähe, der nächste Einkauf in wenigen Autominuten. Und ringsum: Natur, Stille, Luft.",
       "Ein Zuhause, in dem Kinder aufwachsen können. Und Eltern durchatmen."],
-     "wohnzimmer.jpg", "Heller Wohnbereich in den Reihenhäusern Weißenkirchen",
+     "fassade.jpg", "Garten mit Terrasse und Sandkasten in Weißenkirchen",
      "kinderzimmer.jpg", "Kinderzimmer mit viel Licht", "Familienwohnen wie es sein soll."),
 
     (4, "Ankommen nach einem langen Tag.",
