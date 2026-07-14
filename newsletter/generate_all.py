@@ -349,7 +349,7 @@ WEISSENKIRCHEN = [
      "Für Familien gemacht.",
      ["Was braucht eine Familie wirklich? Platz. Einen Garten. Ruhige Straßen. Nachbarn, die man kennt.",
       "Die Reihenhäuser Weißenkirchen liegen in einer ruhigen, familienfreundlichen Lage — mit Garten für die Kinder, Carport für das Auto und genug Platz für alle.",
-      "Schule, Kindergarten, Einkaufen — alles in der Nähe. Und trotzdem: Natur, Stille, Luft.",
+      "Schule und Kindergarten gleich in der Nähe, der nächste Einkauf in wenigen Autominuten. Und ringsum: Natur, Stille, Luft.",
       "Ein Zuhause, in dem Kinder aufwachsen können. Und Eltern durchatmen."],
      "fassade.jpg", "Reihenhäuser Weißenkirchen Außenansicht",
      "kinderzimmer.jpg", "Kinderzimmer mit viel Licht", "Familienwohnen wie es sein soll."),
