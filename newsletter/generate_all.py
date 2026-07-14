@@ -424,9 +424,9 @@ WEISSENKIRCHEN = [
      "Festpreis-Garantie: Heute fixiert, in 10 Jahren noch gültig. So schützen Sie sich vor dem Markt.",
      "Freitag, Woche 5",
      "Heute fixiert. Für immer sicher.",
-     ["Immobilienpreise steigen, Zinsen schwanken, Baukosten entwickeln sich unvorhersehbar. Wer heute wartet, zahlt morgen oft mehr — das haben die vergangenen Jahre deutlich gezeigt.",
+     ["Immobilienpreise steigen, Zinsen schwanken, Baukosten entwickeln sich unvorhersehbar. Wer heute wartet, zahlt morgen mehr — das haben die vergangenen Jahre deutlich gezeigt.",
       "Unser Mietkauf-Modell schafft hier Sicherheit: Zu Beginn leisten Sie einen Grundanteil, anschließend zahlen Sie eine monatliche Miete. Der Kaufpreis wird bereits heute vertraglich festgelegt — und bleibt über die gesamte Laufzeit unverändert, unabhängig von der Marktentwicklung.",
-      "Das ist kein Werbeversprechen, sondern eine vertraglich garantierte Festpreiszusage — ein Modell, das in dieser Form die wenigsten Bauträger anbieten. Bei uns ist es fester Bestandteil. Je nach Preisentwicklung kann sich daraus für Sie ein erheblicher finanzieller Vorteil ergeben.",
+      "Das ist kein Werbeversprechen, sondern eine vertraglich garantierte Festpreiszusage — ein Modell, das in dieser Form die wenigsten Bauträger sowie gemeinnützige Wohnbaugenossenschaften anbieten. Bei uns ist es fester Bestandteil. Je nach Preisentwicklung kann sich daraus für Sie ein erheblicher finanzieller Vorteil ergeben.",
       "Selbstverständlich können Sie sich auch für den sofortigen Direktkauf entscheiden — ebenfalls zum garantierten Festpreis, ohne Nachforderungen und ohne Kleingedrucktes."],
      "fassade.jpg", "Reihenhäuser Weißenkirchen Fassade",
      "wohnzimmer3.jpg", "Heller Wohnbereich", "Festpreis — heute, morgen, in 10 Jahren."),
@@ -659,7 +659,7 @@ def make_html(nr, series, betreff, preheader, versand, headline, body_paras,
                 {e_headline}
               </h1>
               <p style="margin:0 0 16px 0; font-size:16px; color:#4a6070; line-height:1.8;">
-                Guten Tag {{{{ contact.FIRSTNAME }}}},
+                Guten Tag,
               </p>
 
 {paras_html}
