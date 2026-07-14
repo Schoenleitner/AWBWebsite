@@ -403,7 +403,7 @@ WEISSENKIRCHEN = [
      "Freitag, Woche 4",
      "Endlich: echter Platz.",
      ["~140 m² klingen zunächst nach einer Zahl. Aber hinter dieser Zahl steckt: ein Wohnzimmer, das atmet. Eine Küche, die Platz lässt. Schlafzimmer, die mehr sind als Durchgangsräume. Ein Bad, das Sie morgens nicht stresst.",
-      "Dazu: zwei Stellplätze, Keller, Garten. Alles, was eine Familie wirklich braucht.",
+      "Dazu: zwei Stellplätze, durchdachter Stauraum und ein eigener Garten. Alles, was eine Familie wirklich braucht.",
       "Die Reihenhäuser Weißenkirchen sind nicht überdimensioniert — aber sie sind durchdacht. Jeder Quadratmeter hat einen Zweck.",
       "Das merkt man beim Einziehen. Und noch mehr beim Wohnen."],
      "wohnzimmer3.jpg", "Großzügiger Wohnbereich",
