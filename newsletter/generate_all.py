@@ -370,7 +370,7 @@ WEISSENKIRCHEN = [
      "Dienstag, Woche 3",
      "Die Küche — Herz des Hauses.",
      ["In keinem Raum verbringt eine Familie mehr Zeit als in der Küche. Frühstück, Mittagessen, Abendessen — aber auch Gespräche, Hausaufgaben, Planung.",
-      "Die Küchen der Reihenhäuser Weißenkirchen sind offen und großzügig geplant. Modern ausgestattet, mit Platz für alles — und mit einer Verbindung zum Wohnbereich, die das Leben leichter macht.",
+      "Die Küchen der Reihenhäuser Weißenkirchen sind offen und großzügig geplant — mit einer fließenden Verbindung zum Wohnbereich, die das Leben leichter macht. Und das Beste: Die Ausstattung wählen Sie selbst. Der Raum lässt Ihnen alle Möglichkeiten, Ihre Traumküche genau nach Ihren Wünschen zu gestalten.",
       "Kochen und dabei die Kinder im Blick haben. Gäste bewirten, ohne in der Küche zu verschwinden. Den Abend gemeinsam ausklingen lassen.",
       "Alles an einem Ort. Ihrem."],
      "kueche-vis.jpg", "Moderne Küche Reihenhäuser Weißenkirchen",
