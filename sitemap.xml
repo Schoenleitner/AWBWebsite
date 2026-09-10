@@ -38,12 +38,6 @@
   </url>
 
   <url>
-    <loc>https://www.attergauer-wohnbau.at/maklerei/geschaeftslokal-1/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
     <loc>https://www.attergauer-wohnbau.at/referenzen/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
