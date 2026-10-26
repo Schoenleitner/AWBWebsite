@@ -3,4 +3,4 @@ Allow: /
 
 Disallow: /netlify/
 
-Sitemap: https://www.attergauer-wohnbau.at/sitemap.xml
+Sitemap: https://attergauer-wohnbau.at/sitemap.xml

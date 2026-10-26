@@ -178,7 +178,7 @@ ${message}
   // -------------------------------------------------------------------------
   // 2. Bestätigungs-E-Mail an Anfragenden (mit Exposé-Links je nach Projekt)
   // -------------------------------------------------------------------------
-  const BASE_URL = 'https://www.attergauer-wohnbau.at';
+  const BASE_URL = 'https://attergauer-wohnbau.at';
 
   // Exposé-Links zusammenstellen
   const exposeLinks = [];
